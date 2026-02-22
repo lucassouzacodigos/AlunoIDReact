@@ -74,12 +74,11 @@
 import { useEffect, useRef, useState } from "react";
 import decodeToken from "../utils/tokenToJson";
 
-export default function WebcamCapture({cpfform}) {
+export default function WebcamCapture({cpfform, nome}) {
   const videoRef = useRef(null);
   const canvasRef = useRef(null);
   const token = decodeToken()
 
-  const [nome, setNome] = useState("");
 
   // abrir webcam
   useEffect(() => {
@@ -112,7 +111,7 @@ export default function WebcamCapture({cpfform}) {
       },
       body: JSON.stringify({
         cpf: cpfform,
-        nome,
+        nome: nome,
         imagem: base64,
         timestamp
       }),
@@ -123,12 +122,6 @@ export default function WebcamCapture({cpfform}) {
     <div>
       <h2>Capturar rosto</h2>
 
-      <input
-        placeholder="nome da pessoa"
-        value={nome}
-        onChange={e => setNome(e.target.value)}
-      />
-
       <br /><br />
 
       <video ref={videoRef} autoPlay playsInline width={400} />
@@ -136,7 +129,7 @@ export default function WebcamCapture({cpfform}) {
 
       <br /><br />
 
-      <button onClick={() => tirarFoto(Date.now())}>Salvar 10 fotos</button>
+      <button onClick={() => tirarFoto(Date.now())}>Salvar Foto</button>
     </div>
   );
 }

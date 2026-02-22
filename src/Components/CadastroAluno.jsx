@@ -83,6 +83,8 @@ export default function cadastroAluno(){
                 necessidades_desc
             })
         })
+
+        
     }
 
 
@@ -142,7 +144,7 @@ export default function cadastroAluno(){
 
 
 
-                    <FaceLogin cpfform={cpf}/>
+                    <FaceLogin cpfform={cpf} nome={nome}/>
         
                     <button className='BotaoAdicionar' onClick={fetchCadastroAluno} >ADICIONAR</button>
         </div>
