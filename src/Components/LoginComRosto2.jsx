@@ -106,7 +106,7 @@ export default function FaceLogin() {
         setLiberado(true);
         navigate("/")
       } else {
-        setStatus("🔴 Rosto não reconhecido");
+        setStatus("Rosto não reconhecido");
         setLiberado(false);
       }
     }, 800);

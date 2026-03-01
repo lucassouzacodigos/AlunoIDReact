@@ -2,6 +2,7 @@ import express from 'express'
 import { AppDataSource } from '../database/data-source.js'
 import { Like } from 'typeorm'
 import generateToken from '../../src/utils/jwt.js'
+import * as faceapi from "face-api.js";
 
 import salaEntity from '../entities/sala.js'
 import alunoEntity from '../entities/aluno.js'
@@ -37,18 +38,13 @@ route.get("/busca/:query", async (req, res) => {
     return res.json(usuarios)
 })
 
-
-
-
-
-
-
 route.get("/:id/cpf", async (req, res) => {
     const {id} = req.params
 
     const aluno = await usuarioRepository.findOneBy({id_usuario: id})
     return res.json(aluno.cpf)
 })
+
 
 
 
