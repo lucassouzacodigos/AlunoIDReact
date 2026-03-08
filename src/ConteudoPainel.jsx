@@ -14,6 +14,7 @@ import InputRadio from './Components/inputRadio'
 import DivisaoDeLinha from './Components/DivisaoDeLinha'
 import './index.css'
 import Header from './Header'
+import usuario from '../Server/entities/usuario'
 
 
 function Conteudo(){
@@ -111,7 +112,8 @@ function Conteudo(){
 
                                 <DivisaoDeLinha tamanhodafonte={24} cor="#1C3D6E" texto={aluno.nome}></DivisaoDeLinha>
                                 <DivisaoDeLinha tamanhodafonte={24} cor="#1C3D6E" texto={aluno.cpf}></DivisaoDeLinha>
-                                <DivisaoDeLinha tamanhodafonte={24} cor="#1C3D6E" texto={aluno.data_nasc}></DivisaoDeLinha>
+                                {/* <DivisaoDeLinha tamanhodafonte={24} cor="#1C3D6E" texto={aluno.data_nasc}></DivisaoDeLinha> */}
+                                <DivisaoDeLinha tamanhodafonte={24} cor="#1C3D6E" texto={aluno.dentro_da_escola ? <p style={{backgroundColor:"green"}}>on</p> : <p style={{backgroundColor:"red"}}>off</p> }></DivisaoDeLinha>
 
                                 {isOpen && <>
                                 <DivisaoDeLinha tamanhodafonte={18} desc="Modalidade: " texto={aluno.aluno.modalidade_ensino}></DivisaoDeLinha>

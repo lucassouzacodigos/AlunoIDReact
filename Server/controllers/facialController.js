@@ -27,14 +27,25 @@ route.post("/comparar", async (req, res) => {
     const {id, imagemuri} = req.body
 
     const aluno = await usuarioRepository.findOne({where: {id_usuario: id},relations: ["aluno"]})
-    
+    console.log(aluno)
     
     const imagemSalva = path.resolve(process.cwd(),"..", "public","rostos",aluno.nome,`${aluno.cpf}.png`);
     console.log(aluno.cpf, imagemSalva)
     const descRecebido = await gerarDescritorBase64(imagemuri)
     const descSalvo = await gerarDescritor(imagemSalva)
     const match = compararDescritores(descRecebido, descSalvo)
-    res.json({match})
+
+    //caso a comparação nao de certo, entra nesse IF
+    if (!match) {
+        res.json({match: false, message: "Rosto não reconhecido"})
+    }
+
+    //caso de certo, Atualiza o stauts de "dentro da escola" do usuario para true
+    aluno.dentro_da_escola = !aluno.dentro_da_escola
+    await usuarioRepository.save(aluno)
+    res.json({match: true})
+
+    
 })
 
 

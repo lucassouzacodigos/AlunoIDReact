@@ -10,6 +10,7 @@ const usuario = new EntitySchema({
             enum: ["Admin", "Aluno", "Responsavel Legal", "Funcionario"],
             default: "Aluno",
         },
+        dentro_da_escola: {type: "boolean", default: false},
         nome: {type: "varchar", length: 255},
         data_nasc: {type: "date"},
         cpf: {type: "varchar", length: 11,},
