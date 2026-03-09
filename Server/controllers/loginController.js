@@ -18,7 +18,11 @@ route.post("/", async (req, res) => {
     }
 
     const userInfo = await userRepository.findOneBy({email: user})
-    console.log(userInfo)
+    console.log("=========")
+    console.log(userInfo.nome + " \n" + userInfo.email + " \n" + "Logado")
+    console.log(userInfo.tipo_usuario)
+    console.log("=========")
+
 
     if(!userInfo){
         res.status(500).send("Usuario ou senha incorretos")
@@ -29,6 +33,7 @@ route.post("/", async (req, res) => {
         const token = generateToken({
             "nome": userInfo.nome,
             "userID": userInfo.id_usuario,
+            "tipo_usuario": userInfo.tipo_usuario
         })
 
         res.json({"token": token})

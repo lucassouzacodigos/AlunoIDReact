@@ -15,7 +15,8 @@ function decodeToken(){
 
     return {
         "nome": decoded.nome,
-        "userID": decoded.userID
+        "userID": decoded.userID,
+        "tipo_usuario": decoded.tipo_usuario
     }
 }
 

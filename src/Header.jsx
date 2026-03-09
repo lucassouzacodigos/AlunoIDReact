@@ -5,11 +5,12 @@ import notificacao from './assets/notificacao.png'
 import pfp from './assets/jorge.png'
 import kevin from './assets/kevin.jpg'
 import { useNavigate } from 'react-router-dom'
+import decodeToken from './utils/tokenToJson'
 
 function Header(props){
 
     const navigate = useNavigate();
-
+    const token = decodeToken()
     const goToHome = () => {navigate('/')}
 
     return(
@@ -32,7 +33,7 @@ function Header(props){
 
                 <div className="userinfo">
                     <p className="bold">Seja Bem vindo!</p>
-                    <p className="bold">{props.nome}</p>
+                    <p className="bold">{token.nome}</p>
                 </div>
 
                 <img src={kevin} className='profilePicture'/>

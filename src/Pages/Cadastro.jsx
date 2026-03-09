@@ -21,7 +21,7 @@ export default function Cadastro(){
 
     return(
         <div className='homeContainer'>
-            <Header nome={token.nome ||"Undefined"} userID={token.userID} title="" subtitle="Cadastro" src={cadastroIcon}/>
+            <Header title="" subtitle="Cadastro" src={cadastroIcon}/>
             <SideMenu />
             <ConteudoCadastro />
             <Footer />

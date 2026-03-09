@@ -13,7 +13,7 @@ function Home(){
 
     return(
         <div className='homeContainer'>
-            <Header nome={token.nome ||"Undefined"} userID={token.userID} title="Acesse seu" subtitle="QR CODE" src={qrcode}/>
+            <Header  title="Acesse seu" subtitle="QR CODE" src={qrcode}/>
             <SideMenu />
             <Conteudo />
             <Footer />

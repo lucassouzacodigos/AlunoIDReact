@@ -9,9 +9,33 @@ desc anotacoes;
 desc notificacoes;
 desc sala;
 
+truncate usuario;
+truncate aluno;
+truncate anotacoes;
+truncate notificacoes;
+truncate sala;
+
+
 select * from sala;
 select * from usuario;
 select * from aluno;
+select * from funcionario;
+
+
+DELETE FROM usuario where id_usuario = 251;
+
+
+SELECT 
+    u.*,
+    a.*
+FROM usuario u
+LEFT JOIN aluno a
+    ON a.id_aluno = u.id_usuario;
+    
+
+
+
+update usuario set email = "a", senha = "A" where id_usuario = 1;
 
 
 INSERT INTO usuario(tipo_usuario, nome, email, senha) VALUES('aluno','Lucas Tadashi da Silva','lucas@email.com','123');
@@ -28,7 +52,7 @@ create table usuario(
     senha VARCHAR(255),
     sexo ENUM('H', 'M'),
     cep VARCHAR(255),
-    numero VARCHAR(255),
+    numero_casa VARCHAR(255),
     complemento VARCHAR(255)
 );
 
@@ -41,13 +65,13 @@ create table aluno(
     necessidades_especiais BOOLEAN DEFAULT FALSE,
     necessidades_desc TEXT,
     
-    FOREIGN KEY (id_aluno) REFERENCES usuario(id_usuario)
+    FOREIGN KEY (id_aluno) REFERENCES usuario(id_usuario) ON DELETE CASCADE
 );
 
 create table funcionario(
 	id_funcionario INT PRIMARY KEY,
 	ocupacao VARCHAR(255),
-    setor VARCHAR(255),
+    setor VARCHAR(255),	
     tipo_contrato VARCHAR(255),
     numero_registro VARCHAR(255),
     data_de_admissao DATE,

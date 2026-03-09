@@ -7,13 +7,17 @@ import SideMenu from '../SideMenu'
 import qrcode from '../assets/qr-code-default.png'
 import ConteudoCarteirinha from '../ConteudoCarteirinha'
 import catraca from '../assets/catracaIcon.png'
+import decodeToken from '../utils/tokenToJson'
 
 
 
 function EntradaSaida(props){
+
+    const token = decodeToken()
+
     return(
         <div className='homeContainer'>
-            <Header title="Entrada" subtitle="E Saida" src={catraca} />
+            <Header nome={token.nome ||"Undefined"} userID={token.userID} title="Entrada" subtitle="E Saida" src={catraca} />
             <SideMenu />
             <EntradaSaidaCont />
             <Footer />

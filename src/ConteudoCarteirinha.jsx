@@ -26,14 +26,12 @@ function ConteudoCarteirinha(){
 
                 <div className='cartaInfo'>
                     <ul>
-                        <li><p className='infoTexts'>Chupeta da Silva</p></li>
-                        
-
-                        <li><p className='infoTexts'>ETEC Embu - Centro paula dentro</p></li>
+                        <li><p className='infoTexts'>Kevin Valentim</p></li>
+                        <li><p className='infoTexts'>ETEC Embu - Centro Paulo Souza</p></li>
                         <li><p className='infoTexts'>CPF: 123.456.789.01</p></li>
-                        <li><p className='infoTexts'>RG: 123123123</p></li>
+                        <li><p className='infoTexts'>RG: 56.015.854-1</p></li>
                         <li><p className='infoTexts'>Data de Nascimento: 01/01/0001</p></li>
-                        <li><p className='infoTexts'>Matricula: 42144</p></li>
+                        <li><p className='infoTexts'>Matricula: 984984</p></li>
                     </ul>
                 </div>
             </div>
