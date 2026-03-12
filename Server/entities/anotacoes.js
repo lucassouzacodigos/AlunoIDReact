@@ -6,10 +6,10 @@ const anotacoes = new EntitySchema({
     tableName: 'anotacoes',
     columns: {
         anotacao_id: {type:"int", primary: true, generated: true},
-        id_usuario: {type: "int", nullable: false},
+        id_usuario: {type: "int", nullable: true},
         titulo: {type:"varchar", length: 255, default: "Nota Sem Título"},
         conteudo: {type:"text"},
-        cor: {type:"char", length: 7, nullable:false, default: "#808080"} 
+        cor: {type:"char", length: 7, nullable:true, default: "#808080"} 
     },
         relations:{
         usuario: {

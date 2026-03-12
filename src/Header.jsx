@@ -27,7 +27,7 @@ function Header(props){
                 </div>
                 <img className='imgcenter' src={props.src}></img>
             </div>
-
+            <button style={{width:50, height:50}} onClick={() => console.log(token)}></button>
             <div className='userMenu'>
                 <img src={notificacao} className='notificacao' />
 

@@ -40,8 +40,7 @@
 }
 
 .addNotas{
-    /* background-color: violet; */
-    width: 100%;
+    width: 50%;
     height: 20%;
     display: flex;
     align-items: center;

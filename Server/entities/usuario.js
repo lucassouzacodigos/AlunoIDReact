@@ -30,8 +30,13 @@ const usuario = new EntitySchema({
             type: "one-to-one",
             target: "aluno",
             inverseSide: "usuario"
+        },
+        anotacoes: {
+            type: "one-to-many",
+            target: "anotacoes",
+            inverseSide: "usuario"
         }
-    }
+    },
 })
 
 export default usuario

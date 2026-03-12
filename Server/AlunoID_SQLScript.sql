@@ -25,6 +25,7 @@ select * from funcionario;
 DELETE FROM usuario where id_usuario = 251;
 
 
+
 SELECT 
     u.*,
     a.*
@@ -36,6 +37,8 @@ LEFT JOIN aluno a
 
 
 update usuario set email = "a", senha = "A" where id_usuario = 1;
+update usuario set email = "b", senha = "B" where id_usuario = 2;
+update usuario set tipo_usuario = "Admin" where id_usuario = 2;
 
 
 INSERT INTO usuario(tipo_usuario, nome, email, senha) VALUES('aluno','Lucas Tadashi da Silva','lucas@email.com','123');
