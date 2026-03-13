@@ -10,7 +10,14 @@ import decodeToken from './utils/tokenToJson'
 function Header(props){
 
     const navigate = useNavigate();
-    const token = decodeToken()
+    let token = decodeToken()
+    if (token == {} || token == null){
+        token = {
+            "nome":"generico",
+            "userID":1,
+            "tipo_usuario":"Admin"
+        }
+    }
     const goToHome = () => {navigate('/')}
 
     return(
@@ -27,13 +34,13 @@ function Header(props){
                 </div>
                 <img className='imgcenter' src={props.src}></img>
             </div>
-            <button style={{width:50, height:50}} onClick={() => console.log(token)}></button>
+            <button style={{width:50, height:50}} onClick={() => console.log(token)}>print token to console</button>
             <div className='userMenu'>
                 <img src={notificacao} className='notificacao' />
 
                 <div className="userinfo">
                     <p className="bold">Seja Bem vindo!</p>
-                    <p className="bold">{token.nome}</p>
+                    <p className="bold">{token?.nome}</p>
                 </div>
 
                 <img src={kevin} className='profilePicture'/>

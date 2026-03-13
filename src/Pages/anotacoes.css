@@ -9,3 +9,59 @@
     flex-wrap: wrap;
     background-color: var(--branco);
 }
+
+.criadorDeNotas{
+    position: absolute;
+    top: 0;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    height: 90%;
+    width: 85%;
+    opacity: 1;
+    background-color: white;
+    box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.253);
+    border-radius: 15px;
+    justify-content: space-evenly;
+    transition: all ease 200ms;
+}
+
+.criadorDeNotas:hover{
+    background-color: rgb(250, 250, 250);
+}
+
+
+.camposInput{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    padding-left: 8%;
+    width: 90%;
+    border-radius: 15px;
+    height: 75%;
+    background-color: transparent;
+    
+}
+
+.stringtitulo{
+    font-weight: bold;
+    color: var(--TitulosCorClara);
+    font-size: 30px;
+    
+}
+
+.inputTitulo{
+    border-radius: 10px;
+    width: 90%;
+    height: 10%;
+    box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.253);
+    border-width: 1px;
+}
+
+.inputConteudo{
+    border-radius: 15px;
+    width: 90%;
+    height: 50%;
+    box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.253);
+    border-width: 1px;
+}

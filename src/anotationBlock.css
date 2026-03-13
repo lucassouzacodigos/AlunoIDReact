@@ -3,19 +3,21 @@
 
 
 .itemListaNota{
+    flex-shrink: 0;
     margin: 3px;
     border-radius: 15px;
     display: flex;
     align-items: center;
-    height: 13%;
+    word-wrap: break-word;
+    word-break: break-all;
+    min-height: 13%;
     width: 100%;
-    background-color: salmon;
 }
 
 .notinhaIcon{
     background-color: transparent;
-    height: 80%;
-    width: auto;
+    height: 50px;
+    width: 50px;
 }
 
 .textos{
@@ -23,7 +25,8 @@
     justify-content: center;
     flex-direction: column;
     width: 100%;
-    height: 100%;
+    height: "auto";
+    flex-wrap: wrap;
 }
 
 .tituloNota{

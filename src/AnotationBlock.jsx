@@ -1,14 +1,41 @@
 import './anotationBlock.css'
 import notasIcon from './assets/notinhasIcone.png'
+import apagarNota from './assets/apagarnota.png'
+import { useState } from 'react'
 
 function AnotationBlock(props){
+
+    const [confirma, setConfirma] = useState(false)
+
+    const deletarNota = async (notaID) => {
+
+
+
+
+        await fetch(`http://localhost:3333/controle/deletarnota/${notaID}`, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        
+    }
+
+
+
     return(
         <div className='itemListaNota' style={{backgroundColor: props.cor}}> 
-            <img className='notinhaIcon' src={notasIcon}></img>
+            <div style={{height:"100%", display:"flex", alignItems:"start", justifyContent:"center", padding:5}}>
+                            <img className='notinhaIcon' src={notasIcon}></img>
+            </div>
             
-            <div className='textos'>
+            <div className='textos' >
                 <p className='tituloNota bold'> {props.titulo} </p>
                 <p className='subtituloNota bold' > {props.subtitulo} </p>
+            </div>
+
+            <div style={{height:"100%", display:"flex", alignItems:"start", justifyContent:"center", padding:10}}>
+                <img onClick={() => deletarNota(props.notaID)} style={{height:50, width:50}} src={apagarNota}></img>
             </div>
         </div>
     )

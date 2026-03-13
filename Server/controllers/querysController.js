@@ -64,6 +64,30 @@ route.get("/getnotas/:id", async (req,res) => {
 })
 
 
+//SALVA UMA NOTA NOVA
+route.post("/salvarnota", async (req,res) => {
+    const {userID, titulo, conteudo, cor} = req.body
+
+    await anotacoesRepository.save({
+        id_usuario: userID,
+        titulo,
+        conteudo,
+        cor
+    })
+
+    res.send("nota salva")
+})
+
+//DELETA UMA NOTA
+route.delete("/deletarnota/:notaID", async (req,res) => {
+    const {notaID} = req.params
+
+    await anotacoesRepository.delete(notaID)
+
+    res.send(`nota ${notaID} deletada`)
+})
+
+
 
 
 export default route
