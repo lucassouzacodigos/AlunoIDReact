@@ -33,16 +33,18 @@ function DiaItem(props){
             style={{
                 backgroundColor:"#4897d4", 
                 position:"absolute",
-                top:"-300%",
-                left:"-120%",
+                right:"100%",
+                bottom:-16,
                 display:"flex",
                 width:500,
                 height:"auto",
                 alignItems:"center",
                 flexDirection:"column",
                 borderRadius:15,
+                borderColor:"black",
+                borderWidth:2,
                 padding:50,
-                opacity:1
+                opacity:1,
             }}>
                 
                 {notasFiltradas?.map((nota) => {
@@ -61,16 +63,16 @@ function DiaItem(props){
             onMouseEnter={() => setHover(true)} 
             onMouseLeave={() => setHover(false)} 
             style={{}}>
-                <p style={{color: props.color, display:"flex", alignItems:"center", justifyContent:"center"}}>
+                <div style={{color: props.color, display:"flex", alignItems:"center", justifyContent:"center"}}>
 
                     {props.diaNum} 
                     {
                     hasEvent(props.diaNum) 
                     && 
-                    <p style={{borderRadius:150, backgroundColor:props.corfundo, height:25, width:25, position:"absolute", opacity:0.4}}></p>
+                    <p style={{borderRadius:15, backgroundColor:props.corfundo, height:25, width:25, position:"absolute", opacity:0.4}}></p>
                     }
                     
-                </p>
+                </div>
             </div>
         </div>
     )
