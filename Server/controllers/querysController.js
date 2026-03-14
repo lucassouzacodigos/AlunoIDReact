@@ -52,8 +52,7 @@ route.get("/:id/cpf", async (req, res) => {
 
 
 
-//ROTAS, ANOTACOES
-
+//ROTAS, ANOTACOES=---------------
 
 //GET EM TODAS AS NOTAS DE CERTO USUARIO
 route.get("/getnotas/:id", async (req,res) => {
@@ -85,6 +84,17 @@ route.delete("/deletarnota/:notaID", async (req,res) => {
     await anotacoesRepository.delete(notaID)
 
     res.send(`nota ${notaID} deletada`)
+})
+
+//PERGUNTA SE TEM EVENTO EM TAL DIA, SE SIM, RETORNA O EVENTO
+route.get("/hasEvent/:dia", async (req,res) => {
+    const {dia} = req.params
+    const hoje = new Date()
+    const mes = hoje.getMonth()
+
+    await anotacoesRepository.find
+
+
 })
 
 

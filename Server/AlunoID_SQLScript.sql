@@ -20,6 +20,10 @@ select * from sala;
 select * from usuario;
 select * from aluno;
 select * from funcionario;
+SELECT * FROM anotacoes;
+
+UPDATE anotacoes SET data = "2026-03-31" WHERE anotacao_id = 7;
+
 
 
 DELETE FROM usuario where id_usuario = 251;
@@ -33,9 +37,12 @@ FROM usuario u
 LEFT JOIN aluno a
     ON a.id_aluno = u.id_usuario;
     
+desc anotacoes;
+INSERT INTO anotacoes(id_usuario,conteudo) VALUES(250,"teste = FODASE");
 
 
-
+update anotacoes set cor = "#FF0000" WHERE anotacao_id = 2;
+update usuario set email = "a" where id_usuario = 251;
 update usuario set email = "a", senha = "A" where id_usuario = 1;
 update usuario set email = "b", senha = "B" where id_usuario = 2;
 update usuario set tipo_usuario = "Admin" where id_usuario = 2;

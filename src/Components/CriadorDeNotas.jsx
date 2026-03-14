@@ -5,7 +5,7 @@ import decodeToken from '../utils/tokenToJson'
 
 
 
-export default function CriadorDeNotas({toggle}){
+export default function CriadorDeNotas({toggle, refresh}){
 
     const token = decodeToken()
     const [titulo, setTitulo] = useState("")
@@ -25,6 +25,8 @@ export default function CriadorDeNotas({toggle}){
                 cor: cor
             })
         })
+        refresh()
+        toggle()
 
 
     }

@@ -4,6 +4,8 @@ import Calendar from 'react-calendar'
 import 'react-calendar/dist/Calendar.css'
 import Anotacoes from './Pages/Anotacoes'
 import DiaItem from './DiaItem'
+import { useEffect, useState } from 'react'
+import decodeToken from './utils/tokenToJson'
 
 const data = new Date()
 const dia = data.getDate() // dia começa no 1
@@ -47,12 +49,36 @@ function fillCalender(){
 
 
 function BlocoCalendario(){
+
+    const token = decodeToken()
+    const [notas, setNotas] = useState([])
+
+    async function getNotas(){
+    const notas = await fetch(`http://localhost:3333/controle/getNotas/${token.userID}`, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+    })
+    const data = await notas.json()
+    setNotas(data)
+    console.log(data)
+}
+
+
+useEffect(() => {
+    getNotas()
+}, [])
+
+
+
+
     return(
         <div className='bloco flex-bloco' style={{backgroundColor: "rgba(0, 116, 217, 0.8)"}}>
             {/* <div>data:{data.toLocaleDateString()} {dia}/{mes}/{ano}-{weekDay} dias em {nomeDoMes}: {diasMesMain} dias anterior:{diasMesAnterior}{}</div> */}
             <div className='tituloCalendario'>
                 <p className='nomeMes bold'>{nomeDoMes}</p>
-                <p className='numeroAno bold'>2025</p>
+                <p className='numeroAno bold'>{ano}</p>
             </div>
 
             <div className='diasDaSemana'>
@@ -68,14 +94,16 @@ function BlocoCalendario(){
             <div className='calendarioDisplay'>
                 {Array.from({length:primeiroDiaMes}).map((item, index)=>{
                     return(
-                        <DiaItem key={index} diaNum={(diasMesAnterior - primeiroDiaMes)+(index+1)} color="rgba(255, 255, 255, 0.6)"></DiaItem> 
+                        <DiaItem key={index} diaNum={(diasMesAnterior - primeiroDiaMes)+(index+1)} color="rgba(255, 255, 255, 0.6)">
+
+                        </DiaItem> 
                     )
                 })}
 
 
                 {arrayDeDias.map((dia) => {
                     return(
-                    <DiaItem key={dia} diaNum={dia} color="white"></DiaItem> 
+                    <DiaItem corfundo={"#f50808"} notas={notas} key={dia} diaNum={dia} color="white"></DiaItem> 
                 )
                 })}
                 

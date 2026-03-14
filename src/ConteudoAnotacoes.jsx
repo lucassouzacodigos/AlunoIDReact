@@ -30,6 +30,7 @@ function conteudoAnotacoes() {
         })
         const data = await notas.json()
         setNotas(data)
+        console.log(data)
     }
 
 
@@ -56,12 +57,12 @@ function conteudoAnotacoes() {
                     {notas?.map((nota) => {
                         return(
                             // <div>{nota.anotacao_id} {nota.conteudo} {nota.userID}</div>
-                            <AnotationBlock notaID={nota.anotacao_id} key={nota.anotacao_id} cor={nota.cor} titulo={nota.titulo} subtitulo={nota.conteudo} />
+                            <AnotationBlock refresh={() => getNotas()} notaID={nota.anotacao_id} key={nota.anotacao_id} cor={nota.cor} titulo={nota.titulo} subtitulo={nota.conteudo} />
                         )
                     }) }
                     
 
-                    {criadorNotaOpen && <CriadorDeNotas toggle={() => setCriaorNotaOpen(false)} />}
+                    {criadorNotaOpen && <CriadorDeNotas refresh={() => getNotas()} toggle={() => setCriaorNotaOpen(false)} />}
 
                 </div>
 

@@ -9,7 +9,8 @@ const anotacoes = new EntitySchema({
         id_usuario: {type: "int", nullable: true},
         titulo: {type:"varchar", length: 255, default: "Nota Sem Título"},
         conteudo: {type:"text"},
-        cor: {type:"char", length: 7, nullable:true, default: "#808080"} 
+        cor: {type:"char", length: 7, nullable:true, default: "#808080"},
+        data: {type:"date", nullable: true}
     },
         relations:{
         usuario: {
