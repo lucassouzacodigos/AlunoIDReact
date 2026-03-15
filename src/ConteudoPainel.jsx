@@ -101,7 +101,7 @@ function Conteudo(){
             <motion.div className='containerDaLista' style={{backgroundColor:"#F5F5F5"}}
                         variants={{
                             hidden: {opacity:0, },
-                            show:{opacity:1, transition: {type:"tween", duration: 0.05, delayChildren:stagger(0.01)}}
+                            show:{opacity:1, transition: {type:"tween", duration: 0.2, delayChildren:stagger(0.01)}}
                         }}
                         initial="hidden"
                         animate="show"
@@ -113,19 +113,18 @@ function Conteudo(){
                     return(
                         <motion.div 
                         className={`linhaIndividual ${isOpen? "linhaEmFoco" : ""}`} 
-                        onClick={() => setEmFoco(aluno.id_usuario)} 
+                        onClick={() => { if (emFoco != aluno.id_usuario) {setEmFoco(aluno.id_usuario)} else {setEmFoco(null)}}} 
                         key={aluno.id_usuario}
                         variants={{
-                            hidden: {opacity:0, marginTop:20, width:"1%"},
-                            show:{opacity:1, marginTop:0, width:"100%", transition: {type:"tween", duration: 0.05}}
+                            hidden: {opacity:0, marginTop:"100%", marginLeft:"-100%" },
+                            show:{opacity:1, marginTop:0, marginLeft:0,  transition: {type:"tween", duration: 0.2}}
                         }}
-                        style={{opacity:0}}
                         >
 
-                                <div className='genderIcon'>
+                                <motion.div className='genderIcon'>
                                     {aluno.sexo == "H" && <img src={masculino}></img>}
                                     {aluno.sexo == "M" && <img src={feminino}></img>}
-                                </div>
+                                </motion.div>
 
                                 <DivisaoDeLinha tamanhodafonte={24} cor="#1C3D6E" texto={aluno.nome}></DivisaoDeLinha>
                                 <DivisaoDeLinha tamanhodafonte={24} cor="#1C3D6E" texto={aluno.cpf}></DivisaoDeLinha>

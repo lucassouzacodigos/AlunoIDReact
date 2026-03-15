@@ -21,7 +21,6 @@
 .cartaFoto{
     border-radius: 5px;
     width: 200px;
-    height: calc(width / 0,75)px;
     border: 2px solid grey;
 }
 

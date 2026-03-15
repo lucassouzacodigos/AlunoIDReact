@@ -6,7 +6,7 @@ import addNote from './assets/addNote.png'
 import { useEffect, useState } from 'react'
 import decodeToken from './utils/tokenToJson'
 import CriadorDeNotas from './Components/CriadorDeNotas'
-import { AnimatePresence } from 'motion/react'
+import { AnimatePresence, motion, stagger } from 'motion/react'
 
 
 
@@ -44,14 +44,28 @@ function conteudoAnotacoes() {
     
     return (
         <div className='conteudoContainer'>
-            <div className='anotacoesConteudoContainer' style={{backgroundColor:"rtans"}}>
+            <motion.div className='anotacoesConteudoContainer' style={{backgroundColor:"transparent"}}
+            variants={{
+                before: {opacity:1},
+                after: {transition:{type:"tween", ease:"easeOut", duration:stagger(0.1)}}
+            }}
+            initial="before"
+            animate="after"
+            >
                 <div className='topRow'>
                     <h1 className='subtitulo'>Anotações: </h1>
                     
                     <img src={livroBig}></img>
                 </div>
 
-                <div className='listaDeNotas' style={{backgroundColor:"trans", overflowX:"hidden"}}>
+                <motion.div className='listaDeNotas' style={{backgroundColor:"transparent", overflowX:"hidden"}}
+                variants={{
+                before: {opacity:1},
+                after: {transition:{type:"tween", ease:"easeOut", delayChildren:stagger(0.1)}}
+                }}
+                initial="before"
+                animate="after"
+                >
                     {notas.length == 0 && <div><p style={{fontWeight:"bold", fontSize:20}}>Você ainda nao tem notas, Crie uma abaixo</p></div>}
 
                     <AnimatePresence>
@@ -67,13 +81,13 @@ function conteudoAnotacoes() {
                     {criadorNotaOpen && <CriadorDeNotas refresh={() => getNotas()} toggle={() => setCriaorNotaOpen(false)} />}
                     </AnimatePresence>
 
-                </div>
+                </motion.div>
 
                 <div className='addNotas' style={{cursor:"pointer"}} onClick={() => setCriaorNotaOpen((cur) => !cur)}>
                     <p className='bold'>Adicionar notas</p> <img src={addNote} style={{height:35, width:35}}></img> 
                 </div>
 
-            </div>
+            </motion.div>
         </div>
     )
 }

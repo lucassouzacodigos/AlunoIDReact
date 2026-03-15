@@ -24,8 +24,8 @@ function AnotationBlock({cor, titulo, subtitulo, notaID, refresh, animate}){
     return(
         <motion.div className='itemListaNota' style={{backgroundColor: cor}}
         variants={animate? {
-            before: {marginLeft:-2500},
-            after: {marginLeft:0 , transition:{type:"tween", duration: 0.5}}
+            before: {marginLeft:"-250%"},
+            after: {marginLeft:"0%" , transition:{type:"tween", ease: [0.16, 1, 0.3, 1], duration: 2}}
         } : undefined}
         initial="before"
         animate="after"
