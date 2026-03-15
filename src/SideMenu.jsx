@@ -22,7 +22,7 @@ function SideMenu(){
     { name: "Carteirinha", image: carteirinha, targetLink: "/Carteirinha" },
     { name: "Entrada e Saida", image: catraca, targetLink: "/Horarios" },
     { name: "Anotações", image: livro, targetLink: "/Anotacoes" },
-    { name: "Calendário", image: calendario, targetLink: "https://google.com" },
+    { name: "Calendário", image: calendario, targetLink: "/calendario" },
     { name: "Cadastro", image: livro, targetLink: "/Cadastro"},
     { name: "DEBUG", targetLink: "/LoadingDebug" },
     { name: "Alunos", targetLink: "/Painel" },

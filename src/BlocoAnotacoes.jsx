@@ -2,10 +2,12 @@ import './blocoAnotacoes.css'
 import './bloco.css'
 import BarraNotinhasBloco from './BarraNotinhasBloco'
 import livroBig from './assets/livroBig.png'
+import { Link } from 'react-router-dom'
 
-function BlocoAnotacoes(){
+function BlocoAnotacoes({urlClick}){
     return(
         <div className='bloco blocoAnotacoes'>
+            <Link to={urlClick} style={{width:"100%", height:"100%", position:"absolute", top:0, backgroundColor:"transparent", zIndex:1000}}></Link>
             <div className='topdiv'>
                 <p className='titulo bold margin-20'>Anotações:</p> <img className='livroBig' src={livroBig}></img>
             </div>

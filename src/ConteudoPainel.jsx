@@ -15,13 +15,14 @@ import DivisaoDeLinha from './Components/DivisaoDeLinha'
 import './index.css'
 import Header from './Header'
 import usuario from '../Server/entities/usuario'
+import { motion, stagger } from 'framer-motion'
 
 
 function Conteudo(){
 
     const [alunos, setAlunos] = useState([])
     const [senha, setSenha] = useState('')
-    const [pesquisa, setPesquisa] = useState('213')
+    const [pesquisa, setPesquisa] = useState('')
     const [emFoco, setEmFoco] = useState(null)
 
     const deleteUser = async (userID) => {
@@ -97,13 +98,29 @@ function Conteudo(){
 
             <div>BARRA DE PESQUISA {emFoco} <input type='text' onChange={(e) => queryDeBusca(e.target.value)}></input> <button onClick={queryDeBusca}>teste</button> </div>
 
-            <div className='containerDaLista' style={{backgroundColor:"#F5F5F5"}}>
+            <motion.div className='containerDaLista' style={{backgroundColor:"#F5F5F5"}}
+                        variants={{
+                            hidden: {opacity:0, },
+                            show:{opacity:1, transition: {type:"tween", duration: 0.05, delayChildren:stagger(0.01)}}
+                        }}
+                        initial="hidden"
+                        animate="show"
+            >
                 <div>HEADER</div>
                 {alunos?.map((aluno)=> {
                     const isOpen = emFoco === aluno.id_usuario
 
                     return(
-                        <div className={`linhaIndividual ${isOpen? "linhaEmFoco" : ""}`} onClick={() => setEmFoco(aluno.id_usuario)} key={aluno.id_usuario}>
+                        <motion.div 
+                        className={`linhaIndividual ${isOpen? "linhaEmFoco" : ""}`} 
+                        onClick={() => setEmFoco(aluno.id_usuario)} 
+                        key={aluno.id_usuario}
+                        variants={{
+                            hidden: {opacity:0, marginTop:20, width:"1%"},
+                            show:{opacity:1, marginTop:0, width:"100%", transition: {type:"tween", duration: 0.05}}
+                        }}
+                        style={{opacity:0}}
+                        >
 
                                 <div className='genderIcon'>
                                     {aluno.sexo == "H" && <img src={masculino}></img>}
@@ -126,12 +143,12 @@ function Conteudo(){
                                 <button style={{width:50}} onClick={() => updateSenha(aluno.id_usuario)}>Att Senha</button>
                                 <input placeholder='nova senha' onChange={(e) => setSenha(e.target.value)}></input> */}
 
-                        </div>
+                        </motion.div>
 
                     )
                 })}
                 
-            </div>
+            </motion.div>
 
         </div>
     )

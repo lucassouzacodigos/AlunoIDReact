@@ -2,8 +2,10 @@ import './anotationBlock.css'
 import notasIcon from './assets/notinhasIcone.png'
 import apagarNota from './assets/apagarnota.png'
 import { useState } from 'react'
+import {motion, stagger} from 'framer-motion'
 
-function AnotationBlock({cor, titulo, subtitulo, notaID, refresh}){
+
+function AnotationBlock({cor, titulo, subtitulo, notaID, refresh, animate}){
 
     const [confirma, setConfirma] = useState(false)
 
@@ -20,7 +22,15 @@ function AnotationBlock({cor, titulo, subtitulo, notaID, refresh}){
 
 
     return(
-        <div className='itemListaNota' style={{backgroundColor: cor}}> 
+        <motion.div className='itemListaNota' style={{backgroundColor: cor}}
+        variants={animate? {
+            before: {marginLeft:-2500},
+            after: {marginLeft:0 , transition:{type:"tween", duration: 0.5}}
+        } : undefined}
+        initial="before"
+        animate="after"
+        exit="before"
+        > 
             <div style={{height:"100%", display:"flex", alignItems:"start", justifyContent:"center", padding:5}}>
                             <img className='notinhaIcon' src={notasIcon}></img>
             </div>
@@ -33,7 +43,7 @@ function AnotationBlock({cor, titulo, subtitulo, notaID, refresh}){
             <div style={{height:"100%", display:"flex", alignItems:"start", justifyContent:"center", padding:10}}>
                 <img onClick={() => deletarNota(notaID)} style={{height:50, width:50}} src={apagarNota}></img>
             </div>
-        </div>
+        </motion.div>
     )
 }
 

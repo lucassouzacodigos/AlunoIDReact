@@ -6,7 +6,7 @@ import addNote from './assets/addNote.png'
 import { useEffect, useState } from 'react'
 import decodeToken from './utils/tokenToJson'
 import CriadorDeNotas from './Components/CriadorDeNotas'
-
+import { AnimatePresence } from 'motion/react'
 
 
 
@@ -51,18 +51,21 @@ function conteudoAnotacoes() {
                     <img src={livroBig}></img>
                 </div>
 
-                <div className='listaDeNotas' style={{backgroundColor:"trans"}}>
+                <div className='listaDeNotas' style={{backgroundColor:"trans", overflowX:"hidden"}}>
                     {notas.length == 0 && <div><p style={{fontWeight:"bold", fontSize:20}}>Você ainda nao tem notas, Crie uma abaixo</p></div>}
 
+                    <AnimatePresence>
                     {notas?.map((nota) => {
                         return(
                             // <div>{nota.anotacao_id} {nota.conteudo} {nota.userID}</div>
-                            <AnotationBlock refresh={() => getNotas()} notaID={nota.anotacao_id} key={nota.anotacao_id} cor={nota.cor} titulo={nota.titulo} subtitulo={nota.conteudo} />
+                            <AnotationBlock animate={true} refresh={() => getNotas()} notaID={nota.anotacao_id} key={nota.anotacao_id} cor={nota.cor} titulo={nota.titulo} subtitulo={nota.conteudo} />
                         )
                     }) }
+                    </AnimatePresence>
                     
-
+                    <AnimatePresence>
                     {criadorNotaOpen && <CriadorDeNotas refresh={() => getNotas()} toggle={() => setCriaorNotaOpen(false)} />}
+                    </AnimatePresence>
 
                 </div>
 

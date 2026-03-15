@@ -6,6 +6,7 @@ import Anotacoes from './Pages/Anotacoes'
 import DiaItem from './DiaItem'
 import { useEffect, useState } from 'react'
 import decodeToken from './utils/tokenToJson'
+import { Link } from 'react-router-dom'
 
 const data = new Date()
 const dia = data.getDate() // dia começa no 1
@@ -48,7 +49,7 @@ function fillCalender(){
 
 
 
-function BlocoCalendario(){
+function BlocoCalendario({urlClick}){
 
     const token = decodeToken()
     const [notas, setNotas] = useState([])
@@ -74,43 +75,45 @@ useEffect(() => {
 
 
     return(
-        <div className='bloco flex-bloco' style={{backgroundColor: "rgba(0, 116, 217, 0.8)"}}>
-            {/* <div>data:{data.toLocaleDateString()} {dia}/{mes}/{ano}-{weekDay} dias em {nomeDoMes}: {diasMesMain} dias anterior:{diasMesAnterior}{}</div> */}
-            <div className='tituloCalendario'>
-                <p className='nomeMes bold'>{nomeDoMes}</p>
-                <p className='numeroAno bold'>{ano}</p>
-            </div>
 
-            <div className='diasDaSemana'>
-                <p className='diaString bold'>Dom.</p>
-                <p className='diaString bold'>Seg.</p>
-                <p className='diaString bold'>Ter.</p>
-                <p className='diaString bold'>Qua.</p>
-                <p className='diaString bold'>Qui.</p>
-                <p className='diaString bold'>Sex.</p>
-                <p className='diaString bold'>Sab.</p>
-            </div>
+            <div className='bloco flex-bloco' style={{backgroundColor: "rgba(0, 116, 217, 0.8)"}}>
+                <Link to={urlClick} style={{width:"100%", height:"100%", position:"absolute", top:0, backgroundColor:"transparent"}}></Link>
+                {/* <div>data:{data.toLocaleDateString()} {dia}/{mes}/{ano}-{weekDay} dias em {nomeDoMes}: {diasMesMain} dias anterior:{diasMesAnterior}{}</div> */}
+                <div className='tituloCalendario'>
+                    <p className='nomeMes bold'>{nomeDoMes}</p>
+                    <p className='numeroAno bold'>{ano}</p>
+                </div>
 
-            <div className='calendarioDisplay'>
-                {Array.from({length:primeiroDiaMes}).map((item, index)=>{
-                    return(
-                        <DiaItem key={index} diaNum={(diasMesAnterior - primeiroDiaMes)+(index+1)} color="rgba(255, 255, 255, 0.6)">
+                <div className='diasDaSemana'>
+                    <p className='diaString bold'>Dom.</p>
+                    <p className='diaString bold'>Seg.</p>
+                    <p className='diaString bold'>Ter.</p>
+                    <p className='diaString bold'>Qua.</p>
+                    <p className='diaString bold'>Qui.</p>
+                    <p className='diaString bold'>Sex.</p>
+                    <p className='diaString bold'>Sab.</p>
+                </div>
 
-                        </DiaItem> 
+                <div className='calendarioDisplay'>
+                    {Array.from({length:primeiroDiaMes}).map((item, index)=>{
+                        return(
+                            <DiaItem key={index} diaNum={(diasMesAnterior - primeiroDiaMes)+(index+1)} color="rgba(255, 255, 255, 0.6)">
+
+                            </DiaItem> 
+                        )
+                    })}
+
+
+                    {arrayDeDias.map((dia) => {
+                        return(
+                        <DiaItem corfundo={"#f50808"} notas={notas} key={dia} diaNum={dia} color="white"></DiaItem> 
                     )
-                })}
+                    })}
+                    
 
 
-                {arrayDeDias.map((dia) => {
-                    return(
-                    <DiaItem corfundo={"#f50808"} notas={notas} key={dia} diaNum={dia} color="white"></DiaItem> 
-                )
-                })}
-                
-
-
+                </div>
             </div>
-        </div>
     )
 }
 

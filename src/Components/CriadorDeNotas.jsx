@@ -1,7 +1,7 @@
-import { useSearchParams } from 'react-router-dom'
 import '../Pages/anotacoes.css'
 import { useState } from 'react'
 import decodeToken from '../utils/tokenToJson'
+import {motion, stagger} from 'framer-motion'
 
 
 
@@ -34,7 +34,15 @@ export default function CriadorDeNotas({toggle, refresh}){
 
 
     return(
-        <div className="criadorDeNotas">
+        <motion.div className="criadorDeNotas" style={{}}
+        variants={{
+            hidden: {opacity:0, top:40},
+            show: {opacity:1, top:0, transition: {ease:"linear", type:"decay", duration: 0.15, delayChildren:stagger(0.01)}},
+        }}
+        initial="hidden"
+        animate="show"
+        exit="hidden"
+        >
             <div className='notaHeader' style={{backgroundColor:"red", width:"90%", height:"20%"}}>
                 <button style={{height:50, width:50}} onClick={toggle}>X</button>
             </div>
@@ -50,6 +58,6 @@ export default function CriadorDeNotas({toggle, refresh}){
                 <button style={{height:50, width:50}} onClick={salvarNota}>Salvar Nota</button>
 
             </div>
-        </div>
+        </motion.div>
     )
 }

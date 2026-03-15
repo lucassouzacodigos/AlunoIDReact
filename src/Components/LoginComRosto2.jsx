@@ -3,6 +3,7 @@ import * as faceapi from "face-api.js";
 import ReactDom from 'react-dom'
 import decodeToken from "../utils/tokenToJson";
 import { useNavigate } from "react-router-dom";
+import {motion} from 'framer-motion'
 
 export default function FaceLogin() {
   const videoRef = useRef();
@@ -114,10 +115,14 @@ export default function FaceLogin() {
 
   return ReactDom.createPortal(
     <>
-    <div className="loginComRostoMODAL">
-      <div className="loginComRostoCONTENT">
+    <motion.div className="loginComRostoMODAL" 
 
-    <div style={{ textAlign: "center" }}>
+    >
+      <motion.div className="loginComRostoCONTENT" 
+      
+      >
+
+    <div style={{ textAlign: "center" }} >
       <h2>Sistema Facial</h2>
 
       <video
@@ -138,8 +143,8 @@ export default function FaceLogin() {
       )}
     </div>
 
-    </div>
-      </div>
+    </motion.div>
+      </motion.div>
     </>,
     document.getElementById("portal")
   );

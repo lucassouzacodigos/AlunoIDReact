@@ -3,6 +3,7 @@ import logoDigital from '../assets/impressao-digital.png'
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import LoginComRosto2 from '../Components/LoginComRosto2'
+import {motion, AnimatePresence } from 'framer-motion'
 
 
 //request do login
@@ -13,8 +14,8 @@ import LoginComRosto2 from '../Components/LoginComRosto2'
 function Login(){
 
 //request do login
-    const [user, setUser] = useState("ana.clara2@gmail.com")
-    const [senha, setSenha] = useState(123456)
+    const [user, setUser] = useState("lucas@email.com")
+    const [senha, setSenha] = useState(123)
     const [erroLogin, seterroLogin] = useState(false)
     const navigate = useNavigate()
     const [reconhecendoFacial, setReconhecendoFacial] = useState(false)
@@ -82,7 +83,9 @@ function Login(){
 
 
                     </div>
+                    <AnimatePresence>
                     {reconhecendoFacial && <LoginComRosto2 onClose={() => setReconhecendoFacial(false)} info={user} />}
+                    </AnimatePresence>
 
                     {erroLogin && <p className='erroLogin'>Login e/ou senha incorretos</p>}
                 </div>
