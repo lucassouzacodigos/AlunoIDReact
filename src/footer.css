@@ -1,9 +1,20 @@
 @import './index.css';
 
 .footerContainer{
+    position: relative;
     display: flex;
     flex-direction: row;
     background: linear-gradient(to left, #32d6e2, #23b0e9);
+    height: 250px;
+    width: 100%;
+}
+
+.footerContainerAdmin{
+    position: relative;
+
+    display: flex;
+    flex-direction: row;
+    background-color: #1C3D6E;
     height: 250px;
     width: 100%;
 }
@@ -23,4 +34,13 @@
 .font{
     font-weight: bold;
     background-color:transparent;
+}
+
+.copyright{
+    position:   absolute;
+    width: 100%;
+    background-color: white;
+    bottom: 0;
+    text-align: center;
+    font-weight: bold;
 }

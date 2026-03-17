@@ -4,6 +4,7 @@ import Header from '../Header'
 import Footer from '../Footer'
 import SideMenu from '../SideMenu'
 import Conteudo from '../Conteudo'
+import ConteudoAdmin from '../ConteudoAdmin'
 import qrcode from '../assets/qr-code-default.png'
 import decodeToken from '../utils/tokenToJson'
 
@@ -15,7 +16,7 @@ function Home(){
         <div className='homeContainer'>
             <Header  title="Acesse seu" subtitle="QR CODE" src={qrcode}/>
             <SideMenu />
-            <Conteudo />
+            {token.tipo_usuario == "Admin" ? <ConteudoAdmin/> : <Conteudo/>}
             <Footer />
         </div>
 

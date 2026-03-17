@@ -20,6 +20,12 @@ function Login(){
     const navigate = useNavigate()
     const [reconhecendoFacial, setReconhecendoFacial] = useState(false)
 
+    const capturarEnter = (e) => {
+        if (e.key === "Enter"){
+            tentarLogar()
+        }
+    }
+
     const tentarLogar = async () => {
         const response = await fetch('http://localhost:3333/login', {
             method: 'POST',
@@ -76,8 +82,8 @@ function Login(){
                 <div className='CPF-Senha'>
                     
                     <div className="flex-center campos">
-                        <input type="text" name="user" placeholder="E-mail/CPF" id="user" onChange={(e) => setUser(e.target.value)}></input>
-                        <input type="password" name="senha" placeholder="Senha" id="senha" onChange={(e) => setSenha(e.target.value)}></input>
+                        <input  type="text" name="user" placeholder="E-mail/CPF" id="user" onChange={(e) => setUser(e.target.value)}></input>
+                        <input onKeyDown={capturarEnter} type="password" name="senha" placeholder="Senha" id="senha" onChange={(e) => setSenha(e.target.value)}></input>
                         <button className='login-btn' onClick={tentarLogar}>ENTRAR</button>
                         <a href="google.com" id="esqueci-senha">Esqueci minha senha</a>
 

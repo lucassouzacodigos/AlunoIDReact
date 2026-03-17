@@ -169,6 +169,10 @@
     margin-left: 10px;
 }
 
+.inputRadio input:focus{
+    outline: none;
+}
+
 .inputRadio label{
     display: flex;
     flex-wrap: nowrap;

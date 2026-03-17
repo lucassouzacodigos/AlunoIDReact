@@ -10,9 +10,11 @@ function Bloco(props){
                 <img src={props.imagem} />
             </div>
 
-            <div className='blocoInfo'>
+            <div className='blocoInfo' style={{backgroundColor:""}}>
                 <div className='textContent'>
                     <p className='titulo bold '>{props.titulo} <span className='subtitulo bold'>{props.subtitulo}</span></p>
+
+                    <div className='titulo bold'> {props.qtd} Registros</div>
                 </div>
 
             <Link className='bloco-a' to={props.urlClick}>{props.btnName}</Link>

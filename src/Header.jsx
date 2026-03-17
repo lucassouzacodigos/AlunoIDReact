@@ -1,6 +1,7 @@
 
 import './header.css'
 import logo from './assets/impressao-digital.png'
+import logoAdmin from './assets/impressao-digital-admin.png'
 import notificacao from './assets/notificacao.png'
 import pfp from './assets/jorge.png'
 import kevin from './assets/kevin.jpg'
@@ -23,7 +24,7 @@ function Header(props){
     return(
         <div className="headerContainer">
             <div onClick={goToHome} className='logoContainer'>
-                <img src={logo} className='logoHome' />
+                <img src={token.tipo_usuario == "Admin" ? logoAdmin : logo} className='logoHome' />
                 <h2><span className="blueFontLogo">Aluno</span>ID</h2>
             </div>
 
