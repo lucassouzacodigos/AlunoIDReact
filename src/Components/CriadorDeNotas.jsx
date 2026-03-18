@@ -12,6 +12,8 @@ export default function CriadorDeNotas({toggle, refresh}){
     const [conteudo, setConteudo] = useState("")
     const [cor, setCor] = useState("#0079D9")
 
+    const nada = () => {console.log("salve")}
+
     const salvarNota = async () => {
         await fetch(`http://localhost:3333/controle/salvarnota/`, {
             method: 'POST',
@@ -43,19 +45,20 @@ export default function CriadorDeNotas({toggle, refresh}){
         animate="show"
         exit="hidden"
         >
-            <div className='notaHeader' style={{backgroundColor:"red", width:"90%", height:"20%"}}>
+            <div className='notaHeader' style={{}}>
                 <button style={{height:50, width:50}} onClick={toggle}>X</button>
+                <p>Criar nova anotação</p>
             </div>
 
             <div className='camposInput'>
                 <p className='stringtitulo'>Escreva o titulo: </p>
-                <input onChange={(e) => setTitulo(e.target.value)} className='inputTitulo' type='text' placeholder='Titulo da nota'></input>
+                <input style={{marginBottom:15}} onChange={(e) => setTitulo(e.target.value)} className='inputTitulo' type='text' placeholder='Titulo da nota'></input>
 
                 <p className='stringtitulo'>Adicione sua anotação: </p>
-                <input onChange={(e) => setConteudo(e.target.value)} className='inputConteudo' type='text' placeholder='Escreva Aqui'></input>
+                <textarea  onChange={(e) => setConteudo(e.target.value)} className='inputConteudo' type='text' placeholder='Escreva Aqui'></textarea>
 
 
-                <button style={{height:50, width:50}} onClick={salvarNota}>Salvar Nota</button>
+                <button className='botaoSalvar'  onClick={salvarNota}>Salvar Nota</button>
 
             </div>
         </motion.div>

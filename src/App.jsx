@@ -12,6 +12,7 @@ import Login from './Pages/Login.jsx'
 import Cadastro from './Pages/Cadastro.jsx'
 import Painel from './Pages/Painel.jsx'
 import CadastroRosto from './Components/FaceLogin.jsx'
+import Perfil from './Pages/perfil.jsx'
 
 
 let counter = 3;
@@ -54,6 +55,10 @@ const router = createBrowserRouter([
   {
     path : '/cadastroRosto',
     element: <CadastroRosto/>
+  },
+  {
+    path: '/perfil/:id',
+    element: <Perfil/>
   },
 ])
 

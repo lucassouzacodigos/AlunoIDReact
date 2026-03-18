@@ -11,7 +11,7 @@ function Footer(){
     const token = decodeToken()
 
     return(
-            <div className={token.tipo_usuario == "Admin" ? "footerContainerAdmin" : "footerContainer" }>
+            <div className={token?.tipo_usuario == "Admin" ? "footerContainerAdmin" : "footerContainer" }>
                 <div className="footerBlock">
                     <p className="font">Ajuda:</p>
                     <br />

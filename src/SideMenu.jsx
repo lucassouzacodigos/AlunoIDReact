@@ -31,7 +31,7 @@ function SideMenu(){
 
 
     //LISTA MENU LATERAL DO ALUNO
-    if (token.tipo_usuario != "Admin"){
+    if (token?.tipo_usuario != "Admin"){
     menuItems = [
         { name: "Inicio", image: casinha, targetLink: "/" },
         { name: "Carteirinha", image: carteirinha, targetLink: "/Carteirinha" },
