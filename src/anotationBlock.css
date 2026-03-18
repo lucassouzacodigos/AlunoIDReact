@@ -12,6 +12,7 @@
     word-break: break-all;
     min-height: 13%;
     width: 100%;
+    position:relative;
 }
 
 .notinhaIcon{
@@ -39,3 +40,17 @@
     color: rgba(255, 255, 255, 0.8);
 
 }
+
+.confirma{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    position:'absolute'; 
+    background-color: transparent;
+    border: 1px solid black;
+    height: 100%;
+    width: 30%;
+    border-radius: inherit;
+    flex-direction: row;
+}
+

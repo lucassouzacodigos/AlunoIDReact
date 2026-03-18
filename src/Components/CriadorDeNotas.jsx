@@ -52,10 +52,10 @@ export default function CriadorDeNotas({toggle, refresh}){
 
             <div className='camposInput'>
                 <p className='stringtitulo'>Escreva o titulo: </p>
-                <input style={{marginBottom:15}} onChange={(e) => setTitulo(e.target.value)} className='inputTitulo' type='text' placeholder='Titulo da nota'></input>
+                <input style={{marginBottom:15, padding:15}} onChange={(e) => setTitulo(e.target.value)} className='inputTitulo' type='text' placeholder='Titulo da nota'></input>
 
                 <p className='stringtitulo'>Adicione sua anotação: </p>
-                <textarea  onChange={(e) => setConteudo(e.target.value)} className='inputConteudo' type='text' placeholder='Escreva Aqui'></textarea>
+                <textarea style={{padding:15}} onChange={(e) => setConteudo(e.target.value)} className='inputConteudo' type='text' placeholder='Escreva Aqui'></textarea>
 
 
                 <button className='botaoSalvar'  onClick={salvarNota}>Salvar Nota</button>

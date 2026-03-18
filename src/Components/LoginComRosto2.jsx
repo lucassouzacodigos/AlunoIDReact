@@ -123,7 +123,7 @@ export default function FaceLogin() {
       >
 
     <div style={{ textAlign: "center" }} >
-      <h2>Sistema Facial</h2>
+      <h2 onClick={navigate("/")}>Sistema Facial</h2>
 
       <video
         ref={videoRef}

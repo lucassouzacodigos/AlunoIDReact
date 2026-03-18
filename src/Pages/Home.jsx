@@ -16,7 +16,7 @@ function Home(){
         <div className='homeContainer'>
             <Header  title="Acesse seu" subtitle="QR CODE" src={qrcode}/>
             <SideMenu />
-            {token.tipo_usuario == "Admin" ? <ConteudoAdmin/> : <Conteudo/>}
+            {token?.tipo_usuario == "Admin" ? <ConteudoAdmin/> : <Conteudo/>}
             <Footer />
         </div>
 
