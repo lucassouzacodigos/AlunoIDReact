@@ -23,6 +23,7 @@ import decodeToken from './utils/tokenToJson'
 import aluno from '../Server/entities/aluno'
 
 
+
 function SideMenu(){
 
     const token = decodeToken()
@@ -39,10 +40,9 @@ function SideMenu(){
         { name: "Anotações", image: livro, targetLink: "/Anotacoes" },
         { name: "Calendário", image: calendario, targetLink: "/calendario" },
         { name: "Cadastro", image: livro, targetLink: "/Cadastro"},
-        { name: "DEBUG", targetLink: "/LoadingDebug" },
         { name: "Painel", image: lista, targetLink: "/Painel" },
         { name: "Login", targetLink: "/Login" },
-        { name: "Facial", targetLink: "/facial" },
+        { name: "Perfil", targetLink: `/perfil/${token.userID}` },
         ]
     } else {
 
@@ -82,7 +82,8 @@ function SideMenu(){
                         key={index} 
                         {...item} 
                         isSelected={selected === index}
-                        onClick={() => setSelected(index)} />
+                        onClick={() => setSelected(index)} 
+                        />
                     )
                 } )}
             </ul>

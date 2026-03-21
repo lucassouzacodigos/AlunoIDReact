@@ -7,11 +7,16 @@ import pfp from './assets/jorge.png'
 import kevin from './assets/kevin.jpg'
 import { useNavigate } from 'react-router-dom'
 import decodeToken from './utils/tokenToJson'
+import { useEffect, useState } from 'react'
+import axios from 'axios'
+import { api } from './utils/api'
 
 function Header(props){
 
     const navigate = useNavigate();
     let token = decodeToken()
+    const [cpf, setCpf] = useState('')
+
     if (token == {} || token == null){
         token = {
             "nome":"generico",
@@ -19,6 +24,17 @@ function Header(props){
             "tipo_usuario":"Admin"
         }
     }
+    useEffect(() => {
+        async function getCpf(){
+            const getcpf = await api.get(`/controle/${token.userID}/cpf`)
+            setCpf(getcpf.data) 
+        }
+        getCpf()
+    }, [])
+
+
+
+
     const goToHome = () => {navigate('/')}
 
     return(
@@ -44,7 +60,7 @@ function Header(props){
                     <p className="bold">{token?.nome}</p>
                 </div>
 
-                <img src={kevin} className='profilePicture'/>
+                <img src={`/rostos/${token.nome}/${cpf}.png`} className='profilePicture'/>
 
             </div>
         </div>

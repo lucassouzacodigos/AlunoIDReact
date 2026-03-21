@@ -19,8 +19,11 @@
 }
 
 .cartaFoto{
+    object-fit: fill;
     border-radius: 5px;
-    width: 200px;
+    height: auto;
+    width: auto;
+    max-width: 250px;
     border: 2px solid grey;
 }
 

@@ -28,6 +28,21 @@ route.get("/alunos", async (req, res) => {
 })
 
 
+//GET RETORNA UM ALUNO ESPECIFICO
+route.get("/getaluno/:id", async (req, res) => {
+    const {id} = req.params
+
+    const aluno = await usuarioRepository.findOne({
+        where: {id_usuario: id},
+        relations: ["aluno"]
+    })
+    console.log(aluno)
+
+    res.json(aluno)
+})
+
+
+
 //ENDPOINT DA SEARCH BAR PARA ALUNOS
 route.get("/busca/:query", async (req, res) => {
     const {query} = req.params
@@ -40,6 +55,8 @@ route.get("/busca/:query", async (req, res) => {
     return res.json(usuarios)
 })
 
+
+//RETORNA CPF DE 1 ALUNO ESPECIFICO
 route.get("/:id/cpf", async (req, res) => {
     const {id} = req.params
 

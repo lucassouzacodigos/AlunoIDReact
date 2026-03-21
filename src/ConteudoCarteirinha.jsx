@@ -7,9 +7,12 @@ import kevin from './assets/kevin.jpg'
 import { useEffect, useState } from 'react'
 import { QRCodeSVG } from 'qrcode.react'
 import InputRadio from './Components/inputRadio'
+import decodeToken from './utils/tokenToJson'
+import { api } from './utils/api'
 
 
 function ConteudoCarteirinha(){
+    const token = decodeToken()
     let cor = "black"
     let codeSize = 300;
     const carteirinhaHash = "kevinChupetaMonstro"
@@ -18,11 +21,28 @@ function ConteudoCarteirinha(){
     const [qrCode, setQrCode] = useState(null);
 
 
+    const [cpf, setCpf] = useState('')
+
+    if (token == {} || token == null){
+        token = {
+            "nome":"generico",
+            "userID":1,
+            "tipo_usuario":"Admin"
+        }
+    }
+    useEffect(() => {
+        async function getCpf(){
+            const getcpf = await api.get(`/controle/${token.userID}/cpf`)
+            setCpf(getcpf.data) 
+        }
+        getCpf()
+    }, [])
+
 
     return (
         <div className='conteudoContainer'>
             <div className='blocoCarta flex-center'>
-                <img className='cartaFoto' src={kevin}></img>
+                <img className='cartaFoto' src={`/rostos/${token.nome}/${cpf}.png`}></img>
 
                 <div className='cartaInfo'>
                     <ul>
