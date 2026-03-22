@@ -62,7 +62,7 @@ function AnotationBlock({cor, titulo, subtitulo, notaID, refresh, animate}){
         <AnimatePresence>
         {confirma && <motion.div className='confirma'
             variants={{
-                before: {opacity: 0.3, right:-200},
+                before: {opacity: 0.3, right:-250},
                 after: {opacity:1, right:0, transition: {type: "tween", ease: [0.16, 1, 0.3, 1], duration: 0.3}},
                 sair: {opacity:0, right: -250}
             }}
@@ -78,6 +78,7 @@ function AnotationBlock({cor, titulo, subtitulo, notaID, refresh, animate}){
             </div>
         </motion.div>}
         </AnimatePresence>
+
 
         </motion.div>
     )

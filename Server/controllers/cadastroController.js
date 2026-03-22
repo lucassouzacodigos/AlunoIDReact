@@ -167,7 +167,7 @@ route.post("/funcionario",async (req,res) => {
         cpf,
         rg,
         email,
-        senha,
+        senha : "123",
         genero,
         cep,
         numero_casa: numero,

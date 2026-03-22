@@ -6,12 +6,28 @@ import InputNomeado from './inputNomeado'
 import InputRadio from './inputRadio'
 import iconDadosProfissionais from '../assets/dadosprofissionais.png'
 import { useState } from 'react'
+import getCep from '../utils/cep'
+
 
 import App from '../App'
+import FaceLogin from './FaceLogin'
 
 
 
 export default function cadastroFuncionario(){
+
+    const completarEndereco = async () => {
+        if (!cep || cep.length != 8){
+            console.log("invalido")
+            return
+        }
+
+        const enderecoInfo = await getCep(cep)
+        console.log(enderecoInfo)
+        setRua(enderecoInfo.logradouro)
+        setBairro(enderecoInfo.bairro)
+        setCidade(enderecoInfo.localidade)
+    }
 
     const [nome, setNome] = useState(null)
     const [nasc, setNasc] = useState(null)
@@ -89,11 +105,11 @@ export default function cadastroFuncionario(){
             <div className='blocoDeInfo' style={{height: '350px'}}>
                 <div className='tituloBloco'><p>Endereço e contato: </p> <img className='titulo-icon' src={iconEndereco} />  </div>
 
-                <InputNomeado onChange={setCep} titulo="CEP:" espacodireita="50px" />
-                <InputNomeado onChange={setRua} titulo="Rua:" espacodireita="50px" tamanhoBarra="500px"/>
+                <InputNomeado onChange={setCep} titulo="CEP:" espacodireita="50px" perdeufoco={completarEndereco}/>
+                <InputNomeado value={rua} onChange={setRua} titulo="Rua:" espacodireita="50px" tamanhoBarra="500px"/>
                 <InputNomeado onChange={setNumero} titulo="Numero:" espacodireita="50px" tamanhoBarra="110px"/>
-                <InputNomeado onChange={setBairro} titulo="Bairro:" espacodireita="50px" tamanhoBarra="300px"/>
-                <InputNomeado onChange={setCidade} titulo="Cidade:" espacodireita="50px" tamanhoBarra="300px"/>
+                <InputNomeado value={bairro} onChange={setBairro} titulo="Bairro:" espacodireita="50px" tamanhoBarra="300px"/>
+                <InputNomeado value={cidade}onChange={setCidade} titulo="Cidade:" espacodireita="50px" tamanhoBarra="300px"/>
                 <InputNomeado onChange={setComplemento} titulo="Complemento:" espacodireita="50px" tamanhoBarra="200px"/>
             </div>
 
@@ -112,6 +128,8 @@ export default function cadastroFuncionario(){
                 <InputNomeado onChange={setContrato} titulo="Tipo de contrato" tamanhoBarra="380px" />
                 <InputNomeado onChange={setRegistro} titulo="N° do registro" tamanhoBarra="240px" />
             </div>
+
+            <FaceLogin cpfform={cpf} nome={nome}/>
 
 
             <button className='BotaoAdicionar' onClick={fetchCadastroFuncionario} >ADICIONAR</button>

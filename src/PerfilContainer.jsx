@@ -49,7 +49,7 @@ export default function ConteudoPerfil(){
         <div className="conteudoContainer" style={{flexDirection:"column", flexWrap:'nowrap', overflow:"auto"}}>
             
             <div className='blocoDeInfo' style={{height: '350px', alignItems:'center', justifyContent:'center'}}>
-                <img src={`/rostos/${token.nome}/${dadosAluno?.cpf}.png`} style={{height:200, width:200, borderRadius:2002, objectFit:"fill"}}></img>
+                <img src={`/rostos/${token.nome}/${dadosAluno?.cpf}.png`} style={{height:200, width:200, borderRadius:2002, objectFit:"cover"}}></img>
             </div>
 
 

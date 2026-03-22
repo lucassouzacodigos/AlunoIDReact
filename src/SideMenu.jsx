@@ -6,6 +6,7 @@ import MenuIcon from './MenuIcon'
 import carteirinha from './assets/RGicon.png'
 import catraca from './assets/catracaIcon.png'
 import livro from './assets/livro.png'
+import notinha from './assets/observacao.png'
 import calendario from './assets/calendarioIcon.png'
 import kevin from './assets/kevin.jpg'
 import casinha from './assets/homeIcon.png'
@@ -16,6 +17,8 @@ import salas from './assets/salas.png'
 import alunosIcon from './assets/alunosicon.png'
 import funcionariosIcon from './assets/funcionariosIcon.png'
 import salasIcon from './assets/salasIcon.png'
+import perfilicon from './assets/perfil-de-usuario.png'
+import loginIcon from './assets/loginIcon.png'
 
 import { Link } from 'react-router-dom'
 import { useState } from 'react'
@@ -37,12 +40,12 @@ function SideMenu(){
         { name: "Inicio", image: casinha, targetLink: "/" },
         { name: "Carteirinha", image: carteirinha, targetLink: "/Carteirinha" },
         { name: "Entrada e Saida", image: catraca, targetLink: "/Horarios" },
-        { name: "Anotações", image: livro, targetLink: "/Anotacoes" },
+        { name: "Anotações", image: notinha, targetLink: "/Anotacoes" },
         { name: "Calendário", image: calendario, targetLink: "/calendario" },
         { name: "Cadastro", image: livro, targetLink: "/Cadastro"},
         { name: "Painel", image: lista, targetLink: "/Painel" },
-        { name: "Login", targetLink: "/Login" },
-        { name: "Perfil", targetLink: `/perfil/${token.userID}` },
+        { name: "Login", image: loginIcon, targetLink: "/Login" },
+        { name: "Perfil", image: perfilicon, targetLink: `/perfil/${token?.userID}` },
         ]
     } else {
 
@@ -55,12 +58,10 @@ function SideMenu(){
         { name: "Classes", image: salasIcon, targetLink: "/painel"},
         { name: "Painel", image: lista, targetLink: "/Painel" },
         { name: "Calendário", image: calendario, targetLink: "/calendario" },
-        { name: "Login", targetLink: "/Login" },
+        { name: "Login", image: loginIcon, targetLink: "/Login" },
         { name: "Cadastro", image: livro, targetLink: "/Cadastro"},
-        { name: "Anotações", image: livro, targetLink: "/Anotacoes" },
-
-
-
+        { name: "Anotações", image: notinha, targetLink: "/Anotacoes" },
+        { name: "Perfil", image:perfilicon, targetLink: `/perfil/${token?.userID}` },
     ]
 }
 

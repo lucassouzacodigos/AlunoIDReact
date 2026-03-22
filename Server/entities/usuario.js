@@ -35,6 +35,11 @@ const usuario = new EntitySchema({
             type: "one-to-many",
             target: "anotacoes",
             inverseSide: "usuario"
+        },
+        funcionario: {
+            type: "one-to-one",
+            target: "funcionario",
+            inverseSide: "usuario"
         }
     },
 })

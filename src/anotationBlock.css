@@ -59,7 +59,7 @@
     padding-right: 0.4%;
     background-color: inherit;
     border-top-left-radius: 0px;
-    border-bottom-right-radius: 0px;
+    border-bottom-right-radius: 15px;
 }
 
 .sim-nao{
