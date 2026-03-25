@@ -13,16 +13,16 @@ import decodeToken from './utils/tokenToJson'
 import { api } from './utils/api'
 import getEndereco from './utils/cep'
 import defaultprofilepic from './assets/perfil-de-usuario.png'
+import defaultfoto from './assets/perfil-de-usuario.png'
 
 
-
-export default function ConteudoPerfil(){
+export default function ConteudoPerfil({perfilID}){
     const token = decodeToken()
     const [dadosAluno, setDadosAluno] = useState()
     const [endereco, setEndereco] = useState()
 
     async function getUserDetails(){
-        const res = await api.get(`controle/getaluno/${token.userID}`)
+        const res = await api.get(`controle/getaluno/${perfilID}`)
         const data = res.data
         return data
 
@@ -47,13 +47,11 @@ export default function ConteudoPerfil(){
 
     return(
         <div className="conteudoContainer" style={{flexDirection:"column", flexWrap:'nowrap', overflow:"auto"}}>
-            
-            <div className='blocoDeInfo' style={{height: '350px', alignItems:'center', justifyContent:'center'}}>
-                <img src={`/rostos/${token.nome}/${dadosAluno?.cpf}.png`} style={{height:200, width:200, borderRadius:2002, objectFit:"cover"}}></img>
-            </div>
 
-
-            <div className='blocoDeInfo' style={{height: '350px'}}>
+            <div className='blocoDeInfo' style={{height: '750px'}}>
+                <div style={{display:"flex", width:"100%", justifyContent:"center"}}>
+                    <img src={`/rostos/${token.nome}/${dadosAluno?.cpf}.png`} style={{height:200, width:200, borderRadius:2002, objectFit:"cover"}}></img>
+                </div>
                 <div className='tituloBloco'><p>Dados Pessoais: </p> <img className='titulo-icon' src={iconDados} />  </div>
                 <InputNomeado readonly={true} value={dadosAluno?.nome} titulo="Nome Completo:" espacodireita='50px' tamanhoBarra="580px" />
                 <InputNomeado readonly={true} value={dadosAluno?.data_nasc} tipo="date" titulo="Data de Nasc.:" espacodireita='150px' tamanhoBarra="300px" />
@@ -71,6 +69,17 @@ export default function ConteudoPerfil(){
                 <InputNomeado readonly={true} value={dadosAluno?.numero_casa} titulo="Numero:" espacodireita="50px" tamanhoBarra="110px"/>
                 <InputNomeado readonly={true} value={endereco?.bairro} titulo="Bairro:" espacodireita="50px" tamanhoBarra="300px"/>
                 <InputNomeado readonly={true} value={endereco?.localidade} titulo="Cidade:" espacodireita="50px" tamanhoBarra="300px"/>
+            </div>
+
+            {/* DADOS ESCOLARES */}
+            <div className='blocoDeInfo' style={{height: '300px', marginBottom:30}}>
+                <div className='tituloBloco'><p>Dados Escolares:</p> <img className='titulo-icon' src={iconInfo} />  </div>
+
+                <InputNomeado readonly={true} value={dadosAluno.aluno.serie} titulo="Serie:" />
+                <InputNomeado readonly={true} value={dadosAluno.aluno.turma} titulo="Turma:" tamanhoBarra="250px"/>
+                <InputNomeado readonly={true} value={dadosAluno.aluno.modalidade_ensino} titulo="Modalidade de ensino:" tamanhoBarra="300px" />
+                <InputNomeado readonly={true} value={dadosAluno.aluno.turno} titulo="Turno:" />
+                <InputNomeado readonly={true} value={dadosAluno.aluno.necessidades_desc} titulo="Necessidades Especiais: " tamanhoBarra="450px" espacodireita="0px"/>
             </div>
 
         </div>

@@ -18,7 +18,7 @@ export default function Perfil(){
         <div className='homeContainer'>
             <Header></Header>
             <SideMenu></SideMenu>
-            <ConteudoPerfil></ConteudoPerfil>
+            <ConteudoPerfil perfilID={id}></ConteudoPerfil>
             <Footer></Footer>
         </div>
     )

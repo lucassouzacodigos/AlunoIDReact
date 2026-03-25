@@ -12,14 +12,20 @@ import feminino from '../src/assets/feminino.png'
 import { Column } from 'typeorm'
 import InputRadio from './Components/inputRadio'
 import DivisaoDeLinha from './Components/DivisaoDeLinha'
+import presente from './assets/confirmaVerde.png'
+import ausente from './assets/negadoVermelha.png'
 import './index.css'
 import Header from './Header'
 import usuario from '../Server/entities/usuario'
 import { motion, stagger } from 'framer-motion'
+import iconeEditar from './assets/editar.png'
+import { Link, useNavigate } from 'react-router-dom'
+
 
 
 function Conteudo(){
 
+    const router = useNavigate()
     const [alunos, setAlunos] = useState([])
     const [senha, setSenha] = useState('')
     const [pesquisa, setPesquisa] = useState('')
@@ -37,6 +43,10 @@ function Conteudo(){
         })
         console.log(`Usuario ${userID} deletado`)
         fetchAlunos()
+    }
+
+    const perfil = (id) => {
+        router(`/perfil/${id}`)
     }
 
 
@@ -116,8 +126,8 @@ function Conteudo(){
                         onClick={() => { if (emFoco != aluno.id_usuario) {setEmFoco(aluno.id_usuario)} else {setEmFoco(null)}}} 
                         key={aluno.id_usuario}
                         variants={{
-                            hidden: {opacity:0, marginTop:"100%", marginLeft:"-100%" },
-                            show:{opacity:1, marginTop:0, marginLeft:0,  transition: {type:"tween", duration: 0.2}}
+                            hidden: {opacity:0, marginLeft:"-200%" },
+                            show:{opacity:1, marginLeft:0,  transition: {type:"spring", duration: 0.1}}
                         }}
                         >
 
@@ -126,13 +136,14 @@ function Conteudo(){
                                     {aluno.sexo == "M" && <img src={feminino}></img>}
                                 </motion.div>
 
-                                <DivisaoDeLinha tamanhodafonte={24} cor="#1C3D6E" texto={aluno.nome}></DivisaoDeLinha>
-                                <DivisaoDeLinha tamanhodafonte={24} cor="#1C3D6E" texto={aluno.cpf}></DivisaoDeLinha>
+                                <DivisaoDeLinha tamanhodafonte={24} cor="#1C3D6E" texto={<div>{aluno.nome}</div>}></DivisaoDeLinha>
+                                <DivisaoDeLinha tamanhodafonte={24} cor="#1C3D6E" texto={<div> CPF: {aluno.cpf}</div>}></DivisaoDeLinha>
                                 {/* <DivisaoDeLinha tamanhodafonte={24} cor="#1C3D6E" texto={aluno.data_nasc}></DivisaoDeLinha> */}
-                                <DivisaoDeLinha tamanhodafonte={24} cor="#1C3D6E" texto={aluno.dentro_da_escola ? <p style={{backgroundColor:"green"}}>on</p> : <p style={{backgroundColor:"red"}}>off</p> }></DivisaoDeLinha>
+                                <DivisaoDeLinha tamanhodafonte={24} cor="#1C3D6E" texto={<div style={{display:"flex", alignItems:"center"}}>Presente: {aluno.dentro_da_escola ? <img className='presenteIcon' src={presente}/> : <img className='presenteIcon' src={ausente}/>}</div>}></DivisaoDeLinha>
+                                <img onClick={() => perfil(aluno.id_usuario)} className='presenteIcon' style={{marginLeft: "-10%", cursor:"pointer"}} src={iconeEditar}></img>
 
                                 {isOpen && <>
-                                <DivisaoDeLinha tamanhodafonte={18} desc="Modalidade: " texto={aluno.aluno.modalidade_ensino}></DivisaoDeLinha>
+                                <DivisaoDeLinha marginLeft={35} tamanhodafonte={18} desc="Modalidade: " texto={aluno.aluno.modalidade_ensino}></DivisaoDeLinha>
                                 <DivisaoDeLinha tamanhodafonte={18} desc="E-Mail: " texto={aluno.email}></DivisaoDeLinha>
                                 <DivisaoDeLinha tamanhodafonte={18} desc="Sexo: " texto={aluno.sexo == "H"? "Masculino" : "Feminino"}></DivisaoDeLinha>
                                 </>

@@ -12,7 +12,7 @@ import { api } from './utils/api'
 
 
 function ConteudoCarteirinha(){
-    const token = decodeToken()
+    let token = decodeToken()
     let cor = "black"
     let codeSize = 300;
     const carteirinhaHash = "kevinChupetaMonstro"

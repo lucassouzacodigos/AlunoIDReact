@@ -5,7 +5,7 @@ import BlocoAnotacoes from "../BlocoAnotacoes"
 import {  useState } from "react"
 import CadastroSALA from "./cadastroSALA"
 import CadastroFuncionario from "./CadastroFuncionario"
-import CadastroResponsavel from "./CadastroResponsavel"
+import CadastroVisitante from "./CadastroVisitante"
 import CadastroAluno from "./CadastroAluno"
 import InputNomeado from "./inputNomeado"
 
@@ -23,13 +23,13 @@ export default function ConteudoCadastro(){
                 <div className={tab == 'sala' ? 'option-selected' : 'option'} onClick={() => setTab('sala')} ><div className="optionTAB">Cadastro de Salas</div></div>
                 <div className={tab == 'aluno' ? 'option-selected' : 'option'} onClick={() => setTab('aluno')} ><div className="optionTAB">Cadastro de Alunos</div></div>
                 <div className={tab == 'func' ? 'option-selected' : 'option'} onClick={() => setTab('func')} ><div className="optionTAB">Cadastro de Funcionários</div></div>
-                <div className={tab == 'resp' ? 'option-selected' : 'option'} onClick={() => setTab('resp')} ><div className="optionTAB">aa</div></div>
+                <div className={tab == 'visita' ? 'option-selected' : 'option'} onClick={() => setTab('visita')} ><div className="optionTAB">Cadastro de visitante</div></div>
             </div>
                 
             {tab == "sala" && <CadastroSALA/>}
             {tab == "aluno" && <CadastroAluno/>}
             {tab == "func" && <CadastroFuncionario/>}
-            {tab == "resp" && <CadastroResponsavel/>}
+            {tab == "visita" && <CadastroVisitante/>}
 
 
         </div>
