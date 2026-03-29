@@ -14,6 +14,7 @@ import { api } from './utils/api'
 import getEndereco from './utils/cep'
 import defaultprofilepic from './assets/perfil-de-usuario.png'
 import defaultfoto from './assets/perfil-de-usuario.png'
+import LoadingScreen from './LoadingScreen'
 
 
 export default function ConteudoPerfil({perfilID}){
@@ -25,7 +26,6 @@ export default function ConteudoPerfil({perfilID}){
         const res = await api.get(`controle/getaluno/${perfilID}`)
         const data = res.data
         return data
-
     }
 
     useEffect(() => {
@@ -41,16 +41,18 @@ export default function ConteudoPerfil({perfilID}){
 
 
 
-
+    if(!dadosAluno){
+        return <LoadingScreen/>
+    }
 
 
 
     return(
         <div className="conteudoContainer" style={{flexDirection:"column", flexWrap:'nowrap', overflow:"auto"}}>
-
+            
             <div className='blocoDeInfo' style={{height: '750px'}}>
                 <div style={{display:"flex", width:"100%", justifyContent:"center"}}>
-                    <img src={`/rostos/${token.nome}/${dadosAluno?.cpf}.png`} style={{height:200, width:200, borderRadius:2002, objectFit:"cover"}}></img>
+                    <img className='underShadow' src={`/rostos/${dadosAluno.nome}/${dadosAluno?.cpf}.png`} style={{height:200, width:200, borderRadius:2002, objectFit:"cover"}}></img>
                 </div>
                 <div className='tituloBloco'><p>Dados Pessoais: </p> <img className='titulo-icon' src={iconDados} />  </div>
                 <InputNomeado readonly={true} value={dadosAluno?.nome} titulo="Nome Completo:" espacodireita='50px' tamanhoBarra="580px" />
@@ -75,11 +77,12 @@ export default function ConteudoPerfil({perfilID}){
             <div className='blocoDeInfo' style={{height: '300px', marginBottom:30}}>
                 <div className='tituloBloco'><p>Dados Escolares:</p> <img className='titulo-icon' src={iconInfo} />  </div>
 
-                <InputNomeado readonly={true} value={dadosAluno.aluno.serie} titulo="Serie:" />
-                <InputNomeado readonly={true} value={dadosAluno.aluno.turma} titulo="Turma:" tamanhoBarra="250px"/>
-                <InputNomeado readonly={true} value={dadosAluno.aluno.modalidade_ensino} titulo="Modalidade de ensino:" tamanhoBarra="300px" />
-                <InputNomeado readonly={true} value={dadosAluno.aluno.turno} titulo="Turno:" />
-                <InputNomeado readonly={true} value={dadosAluno.aluno.necessidades_desc} titulo="Necessidades Especiais: " tamanhoBarra="450px" espacodireita="0px"/>
+                <InputNomeado readonly={true} value={dadosAluno?.aluno.serie} titulo="Serie:" />
+                <InputNomeado readonly={true} value={dadosAluno?.aluno.turma} titulo="Turma:" tamanhoBarra="250px"/>
+                <InputNomeado readonly={true} value={dadosAluno?.aluno.modalidade_ensino} titulo="Modalidade de ensino:" tamanhoBarra="300px" />
+                <InputNomeado readonly={true} value={dadosAluno?.aluno.turno} titulo="Turno:" />
+                {dadosAluno.aluno.necessidades_desc && <InputNomeado readonly={true} value={dadosAluno?.aluno.necessidades_desc} titulo="Necessidades Especiais: " tamanhoBarra="450px" espacodireita="0px"/>}
+                
             </div>
 
         </div>

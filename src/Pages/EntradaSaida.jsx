@@ -8,6 +8,7 @@ import qrcode from '../assets/qr-code-default.png'
 import ConteudoCarteirinha from '../ConteudoCarteirinha'
 import catraca from '../assets/catracaIcon.png'
 import decodeToken from '../utils/tokenToJson'
+import { api } from '../utils/api'
 
 
 

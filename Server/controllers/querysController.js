@@ -9,6 +9,7 @@ import alunoEntity from '../entities/aluno.js'
 import usuarioEntity from '../entities/usuario.js'
 import funcionarioEntity from '../entities/funcionario.js'
 import AnotacoesEntity from '../entities/anotacoes.js'
+import entrada_saida from '../entities/entrada_saida.js';
 
 const route = express.Router()
 const salaRepository = AppDataSource.getRepository(salaEntity)
@@ -16,6 +17,7 @@ const alunoRepository = AppDataSource.getRepository(alunoEntity)
 const usuarioRepository = AppDataSource.getRepository(usuarioEntity)
 const funcionarioRepository = AppDataSource.getRepository(funcionarioEntity)
 const anotacoesRepository = AppDataSource.getRepository(AnotacoesEntity)
+const entrada_saidaRepository = AppDataSource.getRepository(entrada_saida)
 
 
 
@@ -112,6 +114,20 @@ route.get("/hasEvent/:dia", async (req,res) => {
     await anotacoesRepository.find
 
 
+})
+
+
+
+//// ENDPOINTS DE HORARIOS DE PONTO
+
+route.get("/gethorario/:id" , async (req,res) => {
+    const {id} = req.params
+
+    const pontos = await entrada_saidaRepository.find({where: {id_usuario: id}})
+    if (pontos.length == 0){
+        return res.status(500).send("Sem pontos marcados")
+    }
+    return res.json(pontos)
 })
 
 

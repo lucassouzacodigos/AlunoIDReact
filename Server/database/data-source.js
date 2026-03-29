@@ -14,7 +14,7 @@ const AppDataSource = new DataSource({
     host: "localhost",
     username: "root",
     port: 3306,
-    password: "etecembu@123",
+    password: "",
     database: "ALUNOIDBD",
     entities: [Usuario, Aluno, Sala, Funcionario, Anotacoes, entrada_saida],       
     migrations: ["./Server/database/migrations/*cjs"],

@@ -44,7 +44,6 @@ function SideMenu(){
         { name: "Calendário", image: calendario, targetLink: "/calendario" },
         { name: "Cadastro", image: livro, targetLink: "/Cadastro"},
         { name: "Painel", image: lista, targetLink: "/Painel" },
-        { name: "Login", image: loginIcon, targetLink: "/Login" },
         { name: "Perfil", image: perfilicon, targetLink: `/perfil/${token?.userID}` },
         ]
     } else {
@@ -58,7 +57,6 @@ function SideMenu(){
         { name: "Classes", image: salasIcon, targetLink: "/painel"},
         { name: "Painel", image: lista, targetLink: "/Painel" },
         { name: "Calendário", image: calendario, targetLink: "/calendario" },
-        { name: "Login", image: loginIcon, targetLink: "/Login" },
         { name: "Cadastro", image: livro, targetLink: "/Cadastro"},
         { name: "Anotações", image: notinha, targetLink: "/Anotacoes" },
         { name: "Perfil", image:perfilicon, targetLink: `/perfil/${token?.userID}` },
@@ -88,7 +86,11 @@ function SideMenu(){
                     )
                 } )}
             </ul>
+            <div style={{position:'absolute', bottom:0, margin:15}}>
+                <MenuIcon name="Sair" image={loginIcon} targetLink="/login" />
+            </div>
         </div>
+        
     )
 }
 

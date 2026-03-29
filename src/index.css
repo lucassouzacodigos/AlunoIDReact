@@ -19,7 +19,9 @@
 }
 
 body{
-    background-color: var(--branco)
+    background-color: var(--branco);
+    scrollbar-width: thin;
+    scrollbar-color: #3b82f6 transparent;
 }
 
 .bold{
@@ -67,6 +69,13 @@ a:active {
     font-weight: bold;
     margin-top: 40px;
     flex-shrink: 0;
+    transition: all 10ms;
+}
+
+.BotaoAdicionar:active{
+    transform: translateY(5px);
+    background-color: #239b55;
+    color: rgb(156, 156, 156);
 }
 
 .underShadow{

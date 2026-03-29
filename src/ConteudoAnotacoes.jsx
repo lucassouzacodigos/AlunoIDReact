@@ -7,6 +7,7 @@ import { useEffect, useState } from 'react'
 import decodeToken from './utils/tokenToJson'
 import CriadorDeNotas from './Components/CriadorDeNotas'
 import { AnimatePresence, motion, stagger } from 'motion/react'
+import LoadingScreen from './LoadingScreen'
 
 
 
@@ -16,21 +17,26 @@ import { AnimatePresence, motion, stagger } from 'motion/react'
 
 function conteudoAnotacoes() {
 
+    const [loading, setLoading] = useState(true)
     const token = decodeToken()
     const [criadorNotaOpen, setCriaorNotaOpen] = useState(false)
     const [notas, setNotas] = useState([])
 
 
     async function getNotas(){
-        const notas = await fetch(`http://localhost:3333/controle/getNotas/${token.userID}`, {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-        })
-        const data = await notas.json()
-        setNotas(data)
-        console.log(data)
+        setLoading(true)
+        setTimeout(async () => {
+            const notas = await fetch(`http://localhost:3333/controle/getNotas/${token.userID}`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+            })
+            const data = await notas.json()
+            setNotas(data)
+            console.log(data)  
+            setLoading(false)
+        }, 600);
     }
 
 
@@ -40,6 +46,9 @@ function conteudoAnotacoes() {
     }, [])
 
 
+    if (loading){
+        return <LoadingScreen></LoadingScreen>
+    }
 
     
     return (

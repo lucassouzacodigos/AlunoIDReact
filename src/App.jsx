@@ -60,6 +60,10 @@ const router = createBrowserRouter([
     path: '/perfil/:id',
     element: <Perfil/>
   },
+  {
+    path: '/calendario',
+    element: <LoadingScreen></LoadingScreen>
+  }
 ])
 
 function App() {

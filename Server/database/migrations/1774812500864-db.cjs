@@ -7,8 +7,8 @@
  * @class
  * @implements {MigrationInterface}
  */
-module.exports = class Db1774196728236 {
-    name = 'Db1774196728236'
+module.exports = class Db1774812500864 {
+    name = 'Db1774812500864'
 
     /**
      * @param {QueryRunner} queryRunner
@@ -19,18 +19,22 @@ module.exports = class Db1774196728236 {
         await queryRunner.query(`CREATE TABLE \`sala\` (\`id_sala\` int NOT NULL AUTO_INCREMENT, \`nome\` varchar(255) NOT NULL, \`tipo\` varchar(255) NOT NULL, \`andar\` int NOT NULL, \`capacidade\` int NOT NULL, \`equipamentos\` text NOT NULL, \`tem_ar\` tinyint NOT NULL DEFAULT 0, \`tem_computador\` tinyint NOT NULL DEFAULT 0, \`tem_acessibilidade\` tinyint NOT NULL DEFAULT 0, PRIMARY KEY (\`id_sala\`)) ENGINE=InnoDB`);
         await queryRunner.query(`CREATE TABLE \`funcionario\` (\`id_funcionario\` int NOT NULL, \`cargo\` varchar(255) NOT NULL, \`setor\` varchar(255) NOT NULL, \`contrato\` varchar(255) NOT NULL, \`registro\` varchar(255) NOT NULL, \`data_admissao\` timestamp(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6), PRIMARY KEY (\`id_funcionario\`)) ENGINE=InnoDB`);
         await queryRunner.query(`CREATE TABLE \`anotacoes\` (\`anotacao_id\` int NOT NULL AUTO_INCREMENT, \`id_usuario\` int NULL, \`titulo\` varchar(255) NOT NULL DEFAULT 'Nota Sem Título', \`conteudo\` text NOT NULL, \`cor\` char(7) NULL DEFAULT '#808080', \`data\` date NULL, PRIMARY KEY (\`anotacao_id\`)) ENGINE=InnoDB`);
+        await queryRunner.query(`CREATE TABLE \`entrada_saida\` (\`id_registro\` int NOT NULL AUTO_INCREMENT, \`id_usuario\` int NULL, \`data_atual\` date NULL, \`hora_ponto\` time NULL, \`action\` enum ('Entrada', 'Saida') NOT NULL, PRIMARY KEY (\`id_registro\`)) ENGINE=InnoDB`);
         await queryRunner.query(`ALTER TABLE \`aluno\` ADD CONSTRAINT \`FK_8a2d97bc538f6b5804aad14ebda\` FOREIGN KEY (\`id_aluno\`) REFERENCES \`usuario\`(\`id_usuario\`) ON DELETE CASCADE ON UPDATE NO ACTION`);
         await queryRunner.query(`ALTER TABLE \`funcionario\` ADD CONSTRAINT \`FK_9c49418b71ed3edad5f4a9a70b2\` FOREIGN KEY (\`id_funcionario\`) REFERENCES \`usuario\`(\`id_usuario\`) ON DELETE CASCADE ON UPDATE NO ACTION`);
         await queryRunner.query(`ALTER TABLE \`anotacoes\` ADD CONSTRAINT \`FK_056ac6e6fd958aae80a3bcf7a1a\` FOREIGN KEY (\`id_usuario\`) REFERENCES \`usuario\`(\`id_usuario\`) ON DELETE NO ACTION ON UPDATE NO ACTION`);
+        await queryRunner.query(`ALTER TABLE \`entrada_saida\` ADD CONSTRAINT \`FK_7b3ecdaaf7a89325165d89c1846\` FOREIGN KEY (\`id_usuario\`) REFERENCES \`usuario\`(\`id_usuario\`) ON DELETE NO ACTION ON UPDATE NO ACTION`);
     }
 
     /**
      * @param {QueryRunner} queryRunner
      */
     async down(queryRunner) {
+        await queryRunner.query(`ALTER TABLE \`entrada_saida\` DROP FOREIGN KEY \`FK_7b3ecdaaf7a89325165d89c1846\``);
         await queryRunner.query(`ALTER TABLE \`anotacoes\` DROP FOREIGN KEY \`FK_056ac6e6fd958aae80a3bcf7a1a\``);
         await queryRunner.query(`ALTER TABLE \`funcionario\` DROP FOREIGN KEY \`FK_9c49418b71ed3edad5f4a9a70b2\``);
         await queryRunner.query(`ALTER TABLE \`aluno\` DROP FOREIGN KEY \`FK_8a2d97bc538f6b5804aad14ebda\``);
+        await queryRunner.query(`DROP TABLE \`entrada_saida\``);
         await queryRunner.query(`DROP TABLE \`anotacoes\``);
         await queryRunner.query(`DROP TABLE \`funcionario\``);
         await queryRunner.query(`DROP TABLE \`sala\``);

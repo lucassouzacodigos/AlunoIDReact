@@ -83,7 +83,7 @@ export default function FaceLogin() {
     setInterval(async () => {
       if (liberado == true) {
         console.log("liberado")
-        navigate("/")
+        // navigate("/")
       }
 
 
@@ -105,7 +105,9 @@ export default function FaceLogin() {
         setStatus("🟢 ACESSO LIBERADO");
         console.log("liberado")
         setLiberado(true);
-        navigate("/")
+        setTimeout(() => {
+          navigate("/")
+        }, 500);
       } else {
         setStatus("Rosto não reconhecido");
         setLiberado(false);
@@ -138,7 +140,7 @@ export default function FaceLogin() {
 
       {liberado && (
         <h1 style={{ color: "green" }}>
-          LOGIN TRUE
+          Redirecionando...
         </h1>
       )}
     </div>

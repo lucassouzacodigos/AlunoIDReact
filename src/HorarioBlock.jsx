@@ -3,10 +3,16 @@
 import './horarioblock.css'
 
 
-function HorarioBlock(props){
+function HorarioBlock({ponto}){
+
+
+
     return(
-        <div className='blocoHorarioFundo'>
-            <p>{props.text}</p>
+        <div className='divisao' style={{backgroundColor: ponto.action == "Entrada" ? '#86efac' : '#fca5a5'}}>
+            <div>
+                <p>{ponto.hora_ponto.slice(0, 5)}</p> 
+                <p>{ponto.action}</p>
+            </div>
         </div>
     )
 }
