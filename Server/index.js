@@ -12,6 +12,7 @@ server.use(express.urlencoded({ extended: true }))
 server.use(cors())
 server.use(express.json({ limit: '500mb' }))
 server.use("/", routes)
+server.use("/fotos", express.static('../public/rostos'))
 
 
 AppDataSource.initialize()

@@ -9,9 +9,10 @@ function DiaItem(props){
 
     const notas = props.notas
     const [hover, setHover] = useState(false)
-    const notasFiltradas = [...notas].filter((nota) => {
-        const dia = new Date(nota.data).getDate()
-        return dia === props.diaNum - 1 
+    const notasFiltradas = (notas || []).filter((nota) => {
+    if (!nota?.data) return false
+    const dia = new Date(nota.data).getDate()
+    return dia === props.diaNum
     })
 
     const hasEvent = (diaNum) => {

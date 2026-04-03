@@ -36,7 +36,7 @@ function conteudoAnotacoes() {
             setNotas(data)
             console.log(data)  
             setLoading(false)
-        }, 600);
+        }, 250);
     }
 
 
@@ -56,7 +56,7 @@ function conteudoAnotacoes() {
             <motion.div className='anotacoesConteudoContainer' style={{backgroundColor:"transparent"}}
             variants={{
                 before: {opacity:1},
-                after: {transition:{type:"tween", ease:"easeOut", duration:stagger(0.1)}}
+                after: {transition:{type:"tween", ease:"easeOut", duration:0.2 , delayChildren:stagger(1)}}
             }}
             initial="before"
             animate="after"
@@ -70,7 +70,7 @@ function conteudoAnotacoes() {
                 <motion.div className='listaDeNotas' style={{backgroundColor:"transparent", overflowX:"hidden"}}
                 variants={{
                 before: {opacity:1},
-                after: {transition:{type:"tween", ease:"easeOut", delayChildren:stagger(0.1)}}
+                after: {transition:{type:"tween", ease:"easeOut", delayChildren:stagger(1)}}
                 }}
                 initial="before"
                 animate="after"
