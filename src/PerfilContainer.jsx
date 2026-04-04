@@ -16,6 +16,13 @@ import defaultprofilepic from './assets/perfil-de-usuario.png'
 import defaultfoto from './assets/perfil-de-usuario.png'
 import LoadingScreen from './LoadingScreen'
 
+//badges
+import PiggyXP from './assets/piggyxpbadge.png'
+import Studium from './assets/studiumbadge.png'
+import FocoMais from './assets/foco+badge.png'
+import IndieDecoy from './assets/indiedecoybadge.png'
+import AlunoID from './assets/impressao-digital.png'
+//----
 
 export default function ConteudoPerfil({perfilID}){
     const token = decodeToken()
@@ -51,8 +58,18 @@ export default function ConteudoPerfil({perfilID}){
         <div className="conteudoContainer" style={{flexDirection:"column", flexWrap:'nowrap', overflow:"auto"}}>
             
             <div className='blocoDeInfo' style={{height: '750px'}}>
-                <div style={{display:"flex", width:"100%", justifyContent:"center"}}>
-                    <img className='underShadow' src={`/rostos/${dadosAluno.nome}/${dadosAluno?.cpf}.png`} style={{height:200, width:200, borderRadius:2002, objectFit:"cover"}}></img>
+                <div style={{display:"flex", width:"100%", justifyContent:"center", alignItems:"start"}}>
+                    <img className='underShadow' src={`/rostos/${dadosAluno.nome}/${dadosAluno?.cpf}.png`} style={{margin:5, height:200, width:200, borderRadius:2002, borderColor:"black", borderWidth:5, borderStyle:"solid", objectFit:"cover"}}></img>
+                    
+                    {/* BADGES */}
+                    <div className='badges' style={{paddingTop:25}}>
+                        <div className='badgeIconContainer flex-center'><img className='badgeIcon' src={PiggyXP}></img></div>
+                        <div className='badgeIconContainer flex-center'><img className='badgeIcon' src={AlunoID}></img></div>
+                        <div className='badgeIconContainer flex-center'><img className='badgeIcon' src={Studium}></img></div>
+                        <div className='badgeIconContainer flex-center'><img className='badgeIcon' src={IndieDecoy}></img></div>
+                        <div className='badgeIconContainer flex-center'><img className='badgeIcon' src={FocoMais}></img></div>
+                    </div>
+
                 </div>
                 <div className='tituloBloco'><p>Dados Pessoais: </p> <img className='titulo-icon' src={iconDados} />  </div>
                 <InputNomeado readonly={true} value={dadosAluno?.nome} titulo="Nome Completo:" espacodireita='50px' tamanhoBarra="580px" />

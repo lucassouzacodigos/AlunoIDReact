@@ -69,5 +69,25 @@
     margin-left: 5%;
 }
 
+.badges{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.badgeIconContainer{
+    background: linear-gradient(to top right, #b8e8f5, transparent, #003950,#57d0ff);
+    border-radius: 50px;
+    margin: 5px;
+    min-width: 70px;
+}
+
+.badgeIcon{
+    padding: 2px;
+    height: 30px;
+    width: auto;
+}
+
 
 
