@@ -59,7 +59,7 @@ export default function ConteudoPerfil({perfilID}){
             
             <div className='blocoDeInfo' style={{height: '750px'}}>
                 <div style={{display:"flex", width:"100%", justifyContent:"center", alignItems:"start"}}>
-                    <img className='underShadow' src={`/rostos/${dadosAluno.nome}/${dadosAluno?.cpf}.png`} style={{margin:5, height:200, width:200, borderRadius:2002, borderColor:"black", borderWidth:5, borderStyle:"solid", objectFit:"cover"}}></img>
+                    <img className='underShadow fotoPerfil' src={`/rostos/${dadosAluno.nome}/${dadosAluno?.cpf}.png`} ></img>
                     
                     {/* BADGES */}
                     <div className='badges' style={{paddingTop:25}}>
