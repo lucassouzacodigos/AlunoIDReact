@@ -39,7 +39,7 @@ route.post("/comparar", async (req, res) => {
 
     //caso a comparação nao de certo, entra nesse IF
     if (!match) {
-        res.json({match: false, message: "Rosto não reconhecido"})
+        return res.json({match: false, message: "Rosto não reconhecido"})
     }
 
     //Cria um registro de ponto caso ele esteja saindo da escola
