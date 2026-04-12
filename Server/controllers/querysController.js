@@ -125,7 +125,7 @@ route.get("/gethorario/:id" , async (req,res) => {
 
     const pontos = await entrada_saidaRepository.find({where: {id_usuario: id}})
     if (pontos.length == 0){
-        return res.status(500).send("Sem pontos marcados")
+        return res.status(200).json(pontos)
     }
     return res.json(pontos)
 })
