@@ -14,7 +14,7 @@ import {motion, AnimatePresence } from 'framer-motion'
 function Login(){
 
 //request do login
-    const [user, setUser] = useState("lucas@email.com")
+    const [user, setUser] = useState("123456@etec.com")
     const [senha, setSenha] = useState(123)
     const [erroLogin, seterroLogin] = useState(false)
     const navigate = useNavigate()

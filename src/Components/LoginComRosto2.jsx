@@ -53,7 +53,7 @@ export default function FaceLogin() {
   async function carregarRostoReferencia() {
     setStatus("Carregando rosto salvo...");
 
-    const img = await faceapi.fetchImage(`/rostos/${token.nome}/${cpf}.png`);
+    const img = await faceapi.fetchImage(`/rostos/${token.nome}/${token.nome}.png`);
 
     const detections = await faceapi
       .detectSingleFace(img, new faceapi.TinyFaceDetectorOptions())

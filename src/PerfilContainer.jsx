@@ -59,16 +59,16 @@ export default function ConteudoPerfil({perfilID}){
             
             <div className='blocoDeInfo' style={{height: '750px'}}>
                 <div style={{display:"flex", width:"100%", justifyContent:"center", alignItems:"start"}}>
-                    <img className='underShadow fotoPerfil' src={`/rostos/${dadosAluno.nome}/${dadosAluno?.cpf}.png`} ></img>
+                    <img className='underShadow fotoPerfil' src={`/rostos/${dadosAluno.nome}/${dadosAluno?.nome}.png`} ></img>
                     
                     {/* BADGES */}
-                    <div className='badges' style={{paddingTop:25}}>
+                    {/* <div className='badges' style={{paddingTop:25}}>
                         <div className='badgeIconContainer flex-center'><img className='badgeIcon' src={PiggyXP}></img></div>
                         <div className='badgeIconContainer flex-center'><img className='badgeIcon' src={AlunoID}></img></div>
                         <div className='badgeIconContainer flex-center'><img className='badgeIcon' src={Studium}></img></div>
                         <div className='badgeIconContainer flex-center'><img className='badgeIcon' src={IndieDecoy}></img></div>
                         <div className='badgeIconContainer flex-center'><img className='badgeIcon' src={FocoMais}></img></div>
-                    </div>
+                    </div> */}
 
                 </div>
                 <div className='tituloBloco'><p>Dados Pessoais: </p> <img className='titulo-icon' src={iconDados} />  </div>

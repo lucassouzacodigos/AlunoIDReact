@@ -68,7 +68,15 @@ function Conteudo(){
 
 
     useEffect(() => {
+
+    fetchAlunos()
+
+    const intervalo = setInterval(() => {
         fetchAlunos()
+    }, 2000)
+
+    return () => clearInterval(intervalo)
+
     }, [])
 
 

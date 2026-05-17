@@ -12,7 +12,7 @@ import InputNomeado from "./inputNomeado"
 
 export default function ConteudoCadastro(){
 
-    const [tab, setTab] = useState('sala')
+    const [tab, setTab] = useState('visita')
 
 
 

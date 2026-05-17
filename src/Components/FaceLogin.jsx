@@ -50,7 +50,7 @@ const WebcamCapture = forwardRef(({cpfform, nome, triggerCadastro}, ref) => {
   return (
     <div className="flex-center" style={{flexDirection:"column", marginTop:20}}>
 
-      <video ref={videoRef} autoPlay playsInline width={800} />
+      <video ref={videoRef} autoPlay playsInline width={650} />
       <canvas ref={canvasRef} style={{ display: "none" }} />
 
       <br /><br />

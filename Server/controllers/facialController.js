@@ -31,7 +31,7 @@ route.post("/comparar", async (req, res) => {
     const aluno = await usuarioRepository.findOne({where: {id_usuario: id},relations: ["aluno"]})
     console.log(aluno)
     
-    const imagemSalva = path.resolve(process.cwd(),"..", "public","rostos",aluno.nome,`${aluno.cpf}.png`);
+    const imagemSalva = path.resolve(process.cwd(),"..", "public","rostos",aluno.nome,`${aluno.nome}.png`);
     console.log(aluno.cpf, imagemSalva)
     const descRecebido = await gerarDescritorBase64(imagemuri)
     const descSalvo = await gerarDescritor(imagemSalva)
